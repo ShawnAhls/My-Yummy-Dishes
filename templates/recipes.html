@@ -1,12 +1,14 @@
 {% extends 'base.html'%}
 {% block content%}
+    <div id="display" class=" s12 m6 xl3" >
     {% for recipe in recipes%}
-        {{recipe.category_name}}
-        {{recipe.recipe_name}}
-        {{recipe.ingredients_description}}
-        {{recipe.method_instruction}}
-        {{recipe.prep_time}}
-        {{recipe.cooking_time}}
-        {{recipe.serving}}
+        <div><strong>Category:</strong> {{recipe.category_name}}</div>
+        <div><strong>Recipe:</strong> {{recipe.recipe_name}}</div>
+        <div><strong>Ingredients:</strong> {{recipe.ingredients_description}}</div>
+        <div><strong>Method: </strong>{{recipe.method_instruction}}</div>
+        <div><strong>Prep Time:</strong> {{recipe.prep_time}}</div>
+        <div><strong>Cooking Time:</strong> {{recipe.cooking_time}}</div>
+        <div><strong>Serving:</strong> {{recipe.serving}}</div>
+    </div>       
     {% endfor %}
 {% endblock %}
