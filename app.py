@@ -15,17 +15,17 @@ mongo = PyMongo(app)
 @app.route('/')
 #@app.route('/display_recipes')
 #def display_recipes():
-#    return render_template('recipes.html', recipes=mongo.db.recipes.find())
+  #  return render_template('recipes.html', recipes=mongo.db.recipes.find())
 
 
-#@app.route('/add_recipe')
-#def add_recipe():
-#    return render_template('add-recipe.html')
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add-recipe.html')
 
 
-@app.route('/edit_recipe')
-def edit_recipe():
-    return render_template('edit.html')
+#@app.route('/edit_recipe')
+#def edit_recipe():
+#    return render_template('edit.html')
 
 
 if __name__ == '__main__':
