@@ -1,14 +1,30 @@
 {% extends 'base.html'%}
+
 {% block content%}
-    <div id="display" class=" s12 m6 xl3" >
-    {% for recipe in recipes%}
-        <div><strong>Category:</strong> {{recipe.category_name}}</div>
-        <div><strong>Recipe:</strong> {{recipe.recipe_name}}</div>
-        <div><strong>Ingredients:</strong> {{recipe.ingredients_description}}</div>
-        <div><strong>Method: </strong>{{recipe.method_instruction}}</div>
-        <div><strong>Prep Time:</strong> {{recipe.prep_time}}</div>
-        <div><strong>Cooking Time:</strong> {{recipe.cooking_time}}</div>
-        <div><strong>Serving:</strong> {{recipe.serving}}</div>
-    </div>       
-    {% endfor %}
+
+{% for recipe in recipes%}
+    <h2>{{recipe.recipe_name}}</h2>
+    <div class="row">
+        <div id="display" class="col s12 m6 xl3" >
+            <div class="">
+            <p>help!!!</p>
+            </div>
+            <div class="timing">
+            {% if recipe.category_name %}
+                <strong>Category:</strong> {{recipe.category_name}}
+            {% endif %}   
+            {% if recipe.prep_time %} 
+                <strong>Prep Time:</strong> {{recipe.prep_time}} 
+            {% endif %}
+            {% if recipe.cooking_time %}
+                <strong>Cooking Time:</strong> {{recipe.cooking_time}}
+            {% endif %} 
+            {% if recipe.serving %}
+                <strong>Serving:</strong> {{recipe.serving}}
+            {% endif %} 
+            </div>
+        </div>   
+    </div>    
+{% endfor %}
+
 {% endblock %}
