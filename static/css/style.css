@@ -36,15 +36,21 @@ h2 {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
-.timing {
-    text-align: center;
-    float: right;
-    font-size: 25px;
+.food-image {
+    width: 340px;
+    height: 250px;
 }
 
-.food-image {
-    width: 327px;
-    height: 250px;
-    margin-left: 140px;
-    margin-top: 80px;
+.column {
+    display: inline-flex;
+    float: left;
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: inline-block;
 }

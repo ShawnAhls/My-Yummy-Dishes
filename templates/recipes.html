@@ -4,27 +4,41 @@
 
 {% for recipe in recipes%}
     <h2>{{recipe.recipe_name}}</h2>
-    <div class="row">
-        <div class="col s12 m6 xl3" >
-            <div>
-            <img class="food-image" src="{{url_for('static', filename='images/Beef-curry.jpg')}}" alt="">
-            </div>
-            <div class="timing">
-            {% if recipe.category_name %}
-                <strong>Category:</strong> {{recipe.category_name}}
-            {% endif %}   
-            {% if recipe.prep_time %} 
-                <strong>Prep Time:</strong> {{recipe.prep_time}} 
-            {% endif %}
-            {% if recipe.cooking_time %}
-                <strong>Cooking Time:</strong> {{recipe.cooking_time}}
-            {% endif %} 
-            {% if recipe.serving %}
-                <strong>Serving:</strong> {{recipe.serving}}
-            {% endif %} 
-            </div>
-        </div>   
-    </div>    
+    <section> 
+        <div class="row">
+            <div class="column" >
+                <img class="food-image" src="{{url_for('static', filename='images/Beef-curry.jpg')}}" alt="">
+            </div>    
+            <div class="column">
+                {% if recipe.category_name %}
+                    <strong>Category:</strong> {{recipe.category_name}}</br>
+                {% endif %}   
+                {% if recipe.prep_time %} 
+                    <strong>Prep Time:</strong> {{recipe.prep_time}} </br>
+                {% endif %}
+                {% if recipe.cooking_time %}
+                    <strong>Cooking Time:</strong> {{recipe.cooking_time}}</br>
+                {% endif %} 
+                {% if recipe.serving %}
+                    <strong>Serving:</strong> {{recipe.serving}}</br>
+                {% endif %}
+            </div>   
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="column" >
+                {% if recipe.ingredients_description %}
+                    <strong>Ingredients:</strong> {{recipe.ingredients_description}}</br>
+                {% endif %} 
+            </div>    
+            <div class="column">        
+                {% if recipe.method_instruction %} 
+                    <strong>Method:</strong> {{recipe.method_instruction}} </br>
+                {% endif %}
+            </div>   
+        </div>    
+    </section>
 {% endfor %}
 
 {% endblock %}
