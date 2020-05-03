@@ -1,8 +1,27 @@
 {% extends 'base.html'%}
 
 {% block content%}
-<h2>Display Recipes</h2>
+
+<h2> display Recipes</h2>
+
 <section> 
+    <div>
+    {% for recipe in recipes %}
+        <ol class="multi-column">
+            <li>a: {{ recipe.category_name }}</li>
+            <li>b: {{ recipe.recipe_name }}</li>
+            <li>c: {{ recipe.ingredients_description }}</li>
+            <li>d: {{ recipe.method_instruction }}</li>
+            <li>e: {{ recipe.prep_time }}</li>
+            <li>f: {{ recipe.cooking_time }}</li>
+            <li>g: {{ recipe.serving }}</li>
+            <li>h</li>
+            <li>i</li>
+            <li>j</li>
+        </ol>
+{% endfor %}
+
+    </div>
     <div>
         <a href="{{url_for('home')}}" class="btn btn-primary btn-sm"
          tabindex="-1" role="button">Back</a>

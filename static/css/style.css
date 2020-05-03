@@ -26,7 +26,7 @@ h1 {
 
 h2 {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 50px;
     font-family: 'Luckiest Guy';
     font-style: normal;
     font-weight: normal;
@@ -36,9 +36,16 @@ h2 {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
+h3 {
+    margin-top:300px;
+    color:green;
+}
+
 a {
     color: black;
 }
+
+/*---- Home Page Starts ----*/
 
 .card-img-top {
     width: 100%;
@@ -62,4 +69,14 @@ a {
     content: "";
     clear: both;
     display: inline-block;
+}
+
+/*---- Home Page Ends ----*/
+/*---- Displays Recipes Starts ----*/
+
+.multi-column {
+    margin-top: 50px;
+    column-count: 2;
+    column-gap: 35px;
+    column-fill: auto;
 }

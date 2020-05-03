@@ -20,7 +20,7 @@ def home():
 
 @app.route('/display_recipes')
 def display_recipes():
-    return render_template('display-recipes.html')
+    return render_template('display-recipes.html', recipes=mongo.db.recipes.find())
 
 
 @app.route('/add_recipe')
@@ -33,14 +33,14 @@ def edit_recipe():
     return render_template('edit-recipe.html')
 
 
-@app.route('/recipes')
-def recipes():
-    return render_template('recipes.html')
+@app.route('/recipe')
+def recipe():
+    return render_template('recipe.html')
 
 
-@app.route('/categories')
-def categories():
-    return render_template('category.html')
+@app.route('/Categories')
+def Categories():
+    return render_template('category.html', Categories=mongo.db.Categories.find())
 
 
 if __name__ == '__main__':
