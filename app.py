@@ -37,6 +37,12 @@ def edit_recipe():
 def recipes():
     return render_template('recipes.html')
 
+
+@app.route('/categories')
+def categories():
+    return render_template('category.html')
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

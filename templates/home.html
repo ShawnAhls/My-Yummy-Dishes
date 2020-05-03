@@ -1,45 +1,65 @@
 {% extends 'base.html'%}
 {% block content %}
 
+<!--- Home --->
 <h2>Home</h2>
 
-<div class="row row-cols-1 row-cols-md-3">
-  <div class="col mb-4">
-    <div class="card">
-      <img src="{{url_for('static', filename='images/Beef-curry.jpg')}}" class="card-img-top" alt="Beef Curry">
-      <div class="card-body">
-        <h4 class="card-title"><a href="{{url_for('display_recipes')}}">Beef</a></h4>
-        <h5 class="card-title"><a href="{{url_for('recipes')}}">Beef Curry</a></h5>
-      </div>
+<section>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/Beef-curry.jpg')}}" class="card-img-top" alt="Beef Curry">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">Beef</a></h4>
+                    <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipes')}}">Beef Curry</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/mexican-chicken-burger.jpg')}}" class="card-img-top" alt="Mexican chicken burger">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">Chicken</a></h4>
+                    <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipes')}}">Mexican Chicken Burger</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/grilled-chicken-recipes.jpg')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">Chicken</a></h4>
+                    <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipes')}}">Grilled Chicken</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/rack-of-lamb-delish.jpg')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">Lamb</a></h4>
+                    <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipes')}}">Rack of Lamb</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/Naked-crab.jpg')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="cardlink" href="{{url_for('display_recipes')}}">Fish</a></h4>
+                    <h5 class="card-title">Recipe: <a class="cardlink" href="{{url_for('recipes')}}">Naked Crab</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='images/vegan-nachos.jpg')}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">Category: <a class="cardlink" href="{{url_for('display_recipes')}}">Vegan</a></h4>
+                    <h5 class="card-title">Recipe: <a class="cardlink" href="{{url_for('recipes')}}">Vegan Nachos</a></h5>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="{{url_for('static', filename='images/mexican-chicken-burger.jpg')}}" class="card-img-top" alt="Mexican chicken burger">
-      <div class="card-body">
-        <h4 class="card-title"><a href="{{url_for('display_recipes')}}">Chicken</a></h4>
-        <h5 class="card-title"><a href="{{url_for('recipes')}}">Mexican Chicken Burger</a></h5>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="{{url_for('static', filename='images/grilled-chicken-recipes.jpg')}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h4 class="card-title"><a href="{{url_for('display_recipes')}}">Chicken</a></h4>
-        <h5 class="card-title"><a href="{{url_for('recipes')}}">Grilled Chicken</a></h5>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="{{url_for('static', filename='images/rack-of-lamb-delish.jpg')}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h4 class="card-title"><a href="{{url_for('display_recipes')}}">Lamb</a></h4>
-        <h5 class="card-title"><a href="{{url_for('recipes')}}">Rack of Lamb</a></h5>
-      </div>
-    </div>
-  </div>
-</div>
-
+</section>    
 {% endblock %}
