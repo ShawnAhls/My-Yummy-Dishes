@@ -80,3 +80,11 @@ a {
     column-gap: 35px;
     column-fill: auto;
 }
+
+/*---- Display Recipes Ends ----*/
+/*---- Add Recipes Starts ----*/
+
+.add {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

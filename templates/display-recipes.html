@@ -10,15 +10,6 @@
         {% for recipe in recipes %}
             <ol class="multi-column">
                 <li value="{{ category.category_name }}"><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-            <!---  <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-                <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>-->
             </ol>
         {% endfor %}
     {% endfor %}    

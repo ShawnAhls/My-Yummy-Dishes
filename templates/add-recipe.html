@@ -2,41 +2,64 @@
 
 {% block content%}
 <h2>Add Recipe</h2>
-
-   <!--- <div class="input-field col s12">
-        <select>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+<section class="add">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">Beef</option>
+            <option value="2">Lamb</option>
+            <option value="3">Chicken</option>
+            <option value="4">Fish</option>
+            <option value="5">Vegan</option>
         </select>
-        <label>Materialize Select</label>
-    </div>--->
-    <form action="" method="POST" class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Recipe Name:</label>
+    </div>
+</section>    
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Recipe Name" >
+    </div>
+</section>
+<section class="add">
+    <label for="basic-url">Image of your Recipe</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Use of URL</span>
         </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">list</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Ingredients:</label>
+        <input type="text" class="form-control"  placeholder="Optional" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Ingredients</span>
         </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix"></i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Method:</label>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Method</span>
         </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">alarm</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Prep Time:</label>
-        </div>
-      </div>
-    </form>
-</div>
-
-
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Prep Time" >
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Cooking Time" >
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Serving" >
+    </div>
+</section>
 {% endblock %}
