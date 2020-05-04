@@ -8,16 +8,16 @@
     <div>
     {% for recipe in recipes %}
         <ol class="multi-column">
-            <li>a: {{ recipe.category_name }}</li>
-            <li>b: {{ recipe.recipe_name }}</li>
-            <li>c: {{ recipe.ingredients_description }}</li>
-            <li>d: {{ recipe.method_instruction }}</li>
-            <li>e: {{ recipe.prep_time }}</li>
-            <li>f: {{ recipe.cooking_time }}</li>
-            <li>g: {{ recipe.serving }}</li>
-            <li>h</li>
-            <li>i</li>
-            <li>j</li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
+            <li><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
         </ol>
 {% endfor %}
 

@@ -20,7 +20,8 @@ def home():
 
 @app.route('/display_recipes')
 def display_recipes():
-    return render_template('display-recipes.html', recipes=mongo.db.recipes.find())
+    return render_template('display-recipes.html',
+                           recipes=mongo.db.recipes.find())
 
 
 @app.route('/add_recipe')
@@ -40,7 +41,8 @@ def recipe():
 
 @app.route('/Categories')
 def Categories():
-    return render_template('category.html', Categories=mongo.db.Categories.find())
+    return render_template('category.html',
+                           Categories=mongo.db.Categories.find())
 
 
 if __name__ == '__main__':
