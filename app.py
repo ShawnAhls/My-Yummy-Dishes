@@ -21,7 +21,8 @@ def home():
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
-                           recipes=mongo.db.recipes.find())
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.recipes.find())
 
 
 @app.route('/add_recipe')
