@@ -1,20 +1,24 @@
 {% extends 'base.html'%}
 
 {% block content%}
-{% for category in categories %}
-<h2> {{ category.category_name }} Recipes</h2>
-
-<section> 
-    <div>
-    
-        {% for recipe in recipes %}
-            <ol class="multi-column">
-                <li value="{{ category.category_name }}"><a href="{{url_for('recipe')}}">{{ recipe.recipe_name }}</a></li>
-            </ol>
-        {% endfor %}
-    {% endfor %}    
+<h2> Recipes</h2>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Prep Time" >Prep Time:
     </div>
-    <div>
+</section>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Cooking Time" >Cooking Time:
+    </div>
+</section>
+<section class="add">
+    <div class="input-group">
+    <input type="text" class="form-control" placeholder="Serving" >Serving:
+    </div>
+</section>
+<section>
+    <div class="buttons">
         <a href="{{url_for('home')}}" class="btn btn-primary btn-sm"
          tabindex="-1" role="button">Back</a>
     </div>  

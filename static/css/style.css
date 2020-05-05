@@ -13,7 +13,7 @@ header {
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
     font-family: 'Luckiest Guy';
     margin-top: 0px;
     font-style: normal;
@@ -22,6 +22,15 @@ h1 {
     line-height: 100px;
     color: #FCFCFC;
     text-shadow: 14px 10px 7px rgba(195, 193, 193, 0.25);
+}
+
+h1 a {
+    color: #FCFCFC;
+}
+
+h1 a:hover {
+    color: #FCFCFC;
+
 }
 
 h2 {
@@ -43,6 +52,10 @@ h3 {
 
 a {
     color: black;
+}
+
+.buttons {
+    float: right;
 }
 
 /*---- Home Page Starts ----*/
