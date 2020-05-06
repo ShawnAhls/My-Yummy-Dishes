@@ -1,18 +1,20 @@
 {% extends 'base.html'%}
 
 {% block content %}
+
+{% for category in categories %}
+<h2>{{ category.category_name }} Recipes</h2>
+{% endfor %}
+
 {% for recipe in recipes %}
-<h2> Recipes</h2>
 <section>
     <div>
-        <div class="row row-cols-3 row-cols-md-3">
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{{url_for('static', filename='images/Beef-curry.jpg')}}" 
-                              class="card-img-top" alt="Beef Curry">
-                    <p>Recipe Name:  </p>
+        <div class="row-featurette">
+            <div class="row-cols-3 row-cols-md-3">
+                <div class="col mb-4">
+                    <p>Recipe Name:{{ recipe.recipe_name }}  </p>
                 </div>
-            </div>
+            </div>    
         </div>    
     </div>
 </section>
