@@ -35,7 +35,9 @@ def add_recipe():
 
 @app.route('/edit_recipe')
 def edit_recipe():
-    return render_template('edit-recipe.html')
+    return render_template('edit-recipe.html',
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.categories.find())
 
 
 @app.route('/recipe')

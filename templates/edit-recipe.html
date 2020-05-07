@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block content%}
-
+{% for recipe in recipes %}
 <h2>Editing </h2>
 <section class="add">
     <div class="input-group mb-3">
@@ -23,7 +23,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Recipe Name</span>
         </div>
-    <input type="text" class="form-control" placeholder="Recipe Name" >
+        <input type="text" class="form-control" placeholder="{{ recipe.recipe_name }}" >
     </div>
 </section>
 <section class="add">
@@ -40,7 +40,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Ingredients</span>
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients_description }}</textarea>
     </div>
 </section>
 <section class="add">
@@ -48,7 +48,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Method</span>
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.method_instruction }}</textarea>
     </div>
 </section>
 <section class="add">
@@ -56,7 +56,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Prep Time</span>
         </div>
-    <input type="text" class="form-control" placeholder="Prep Time" >
+    <input type="text" class="form-control" placeholder="{{ recipe.prep_time }}" >
     </div>
 </section>
 <section class="add">
@@ -64,7 +64,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Cooking Time</span>
         </div>
-    <input type="text" class="form-control" placeholder="Cooking Time" >
+    <input type="text" class="form-control" placeholder="{{ recipe.cooking_time }}" >
     </div>
 </section>
 <section class="add">
@@ -72,9 +72,10 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Serving</span>
         </div>
-    <input type="text" class="form-control" placeholder="Serving" >
+    <input type="text" class="form-control" placeholder="{{ recipe.serving }}" >
     </div>
 </section>
+{% endfor %}
 <section>
     <div class="buttons">
         <a href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
