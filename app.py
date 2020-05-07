@@ -47,10 +47,10 @@ def recipe():
                            categories=mongo.db.categories.find())
 
 
-@app.route('/Categories')
-def Categories():
+@app.route('/categories')
+def categories():
     return render_template('category.html',
-                           Categories=mongo.db.Categories.find())
+                           categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':

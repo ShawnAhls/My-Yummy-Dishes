@@ -2,22 +2,22 @@
 
 {% block content%}
 {% for recipe in recipes %}
-<h2>Editing </h2>
+<h2>Editing  {{ recipe.recipe_name }}</h2>
+
 <section class="add">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
+        <select class="custom-select" id="inputGroupSelect01" name="category_name">
             <option selected>Choose...</option>
-            <option value="1">Beef</option>
-            <option value="2">Lamb</option>
-            <option value="3">Chicken</option>
-            <option value="4">Fish</option>
-            <option value="5">Vegan</option>
+            {% for category in categories %}
+            <option value="{{ category.category_name }}">{{ category.category_name }} </option>
+            {% endfor %}
         </select>
     </div>
 </section>    
+
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">

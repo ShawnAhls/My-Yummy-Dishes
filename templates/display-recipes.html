@@ -1,22 +1,20 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    {% for category in categories %}
-    <h2>{{ category.category_name }} Recipes</h2>
-        {% for recipe in recipes %}
-            <section>
-                <div>
-                    <div class="row-featurette">
-                        <div class="row-cols-3 row-cols-md-3">
-                            <div class="col mb-4">
-                                <p><strong>Recipe Name:</strong>{{ recipe.recipe_name }}  </p>
-                            </div>
-                        </div>    
-                    </div>    
-                </div>
-            </section>
-         {% endfor%}
-    {% endfor%}        
+<h2>Recipes</h2>
+    {% for recipe in recipes %}
+    <section>
+        <div>
+            <div class="row-featurette">
+                <div class="row-cols-3 row-cols-md-3">
+                    <div class="col mb-4">
+                        <p><strong>Recipe Name:</strong>{{ recipe.recipe_name }}  </p>
+                    </div>
+                </div>    
+            </div>    
+        </div>
+    </section>
+    {% endfor %}
     <section>
         <div class="buttons">
             <a href="{{url_for('home')}}" class="btn btn-primary btn-sm"
