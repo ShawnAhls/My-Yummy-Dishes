@@ -1,79 +1,83 @@
 {% extends 'base.html'%}
 
-{% block content%}
-<h2>Recipe Name</h2>
-<section class="add">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Category</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">Beef</option>
-            <option value="2">Lamb</option>
-            <option value="3">Chicken</option>
-            <option value="4">Fish</option>
-            <option value="5">Vegan</option>
-        </select>
-    </div>
-</section>    
+{% block content %}
+{% for recipe in recipes %}
+<h2>{{ recipe.recipe_name }}</h2>
+<!--- Category starts -->
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Recipe Name</span>
+            <span class="input-group-text" id="basic-addon0">Category Name</span>          
         </div>
-    <input type="text" class="form-control" placeholder="Recipe Name" >
+        
+        <p type="text" class="form-control" > {{ recipe.category_name }} Category</p>
+        
     </div>
 </section>
-<section class="add">
-    <!--- <label for="basic-url">Image of your Recipe</label> --->
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Url of Image</span>
-        </div>
-        <input type="text" class="form-control"  placeholder="Optional" id="basic-url" aria-describedby="basic-addon3">
-    </div>
-</section>
+<!--- Category Ends -->
+<!--- Recipe Name starts -->
+
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Ingredients</span>
+            <span class="input-group-text" id="basic-addon1">Recipe Name</span>          
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <p type="text" class="form-control" >{{ recipe.recipe_name }}</p>
     </div>
 </section>
+<!--- Recipe Name Ends -->
+<!--- Ingredients starts -->
+<section class="add">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon2">Ingredients</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients_description }}</textarea>
+    </div>
+</section>
+<!--- Ingredients Ends -->
+<!--- Method starts -->
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Method</span>
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.method_instruction }}</textarea>
     </div>
 </section>
+<!--- Method Ends -->
+<!--- Prep Time Starts -->
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Prep Time</span>
+            <span class="input-group-text" id="basic-addon4">Prep Time</span>
         </div>
-    <input type="text" class="form-control" placeholder="Prep Time" >
+        <p type="text" class="form-control" placeholder="Prep Time" >{{ recipe.prep_time }}</p>
     </div>
 </section>
+<!--- Pre Time Ends -->
+<!--- Cookng Time starts -->
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Cooking Time</span>
+            <span class="input-group-text" id="basic-addon5">Cooking Time</span>
         </div>
-    <input type="text" class="form-control" placeholder="Cooking Time" >
+        <p type="text" class="form-control" placeholder="Cooking Time" >{{ recipe.cooking_time }}</p>
     </div>
 </section>
+<!--- Cooking Time Ends -->
+<!--- Serving starts -->
 <section class="add">
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Serving</span>
+            <span class="input-group-text" id="basic-addon6">Serving</span>
         </div>
-    <input type="text" class="form-control" placeholder="Serving" >
+        <p type="text" class="form-control" placeholder="Serving" >{{ recipe.serving }}</p>
     </div>
 </section>
+
+<!--- Serving Ends -->
+<!--- Buttons starts -->
 <section> 
     <div class="buttons">
         <a href="{{url_for('edit_recipe')}}" class="btn btn-primary btn-sm"
@@ -82,5 +86,7 @@
          tabindex="-1" role="button">Back</a>
     </div>  
 </section>
+<!--- Buttons Ends -->
+{% endfor %}
 
 {% endblock %}

@@ -21,8 +21,7 @@ def home():
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
-                           recipes=mongo.db.recipes.find(),
-                           categories=mongo.db.categories.find())
+                           recipes=mongo.db.recipes.find())
 
 
 @app.route('/add_recipe', methods=["GET", "POST"])
@@ -39,7 +38,9 @@ def edit_recipe():
 
 @app.route('/recipe')
 def recipe():
-    return render_template('recipe.html')
+    return render_template('recipe.html',
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.categories.find())
 
 
 @app.route('/Categories')
