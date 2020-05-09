@@ -12,6 +12,15 @@ header {
     height: 110px;
 }
 
+.social {
+    margin-top: 70px;
+    padding-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    height: 80px;
+    background-color: #000000;
+} 
+
 h1 {
     text-align: center;
     font-family: 'Luckiest Guy';
@@ -56,6 +65,7 @@ a {
 
 .buttons {
     float: right;
+    margin-bottom: 30px;
 }
 
 /*---- Home Page Starts ----*/
