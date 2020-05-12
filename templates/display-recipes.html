@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h2>Recipes</h2>
-    {% for recipe in recipes %}
+{% for recipe in recipes %}
+<h2>{{ recipe.category_name }} Recipes</h2>
     <section>
     <div class="modal" id="delete" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -14,7 +14,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>You are going to delete {{ recipe.recipe_name}} recipe</p>
+                    <p>You are going to delete {{ recipe.recipe_name }} recipe</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

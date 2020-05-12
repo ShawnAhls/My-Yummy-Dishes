@@ -25,6 +25,12 @@ def display_recipes():
                            categories=mongo.db.categories.find())
 
 
+@app.route('/display_recipes_cat/<category_name>', methods=['GET', 'POST'])
+def display_recipes_cat(category_name):
+    results = mongo.db.recipes.find({'category_name': category_name})
+    return render_template('display-recipes.html', recipes=results)
+
+
 @app.route('/add_recipe', methods=["GET", "POST"])
 def add_recipe():
     add_recipe = request.form.get('recipe_name'),
@@ -42,7 +48,10 @@ def edit_recipe():
 
 @app.route('/recipe')
 def recipe():
-    return render_template('recipe.html',
+    instruction = ['1. Heat a splash of vegetable oil in a hot pan. Season the steak with salt and pepper, then put in the hot pan. Cook for 2-3 minutes on each side (for medium-rare) until the outside is brown and starting to crisp at the edges, then set aside on a warm plate to rest',
+                   '2. Return the pan to the heat and add a large knob of butter along with the chopped anchovy fillets and capers. Stir to heat through and scrape up any crispy bits from the base of the pan.',
+                   '3. Return the steak to the pan along with any resting juices and spoon the hot butter over to coat. Top with a knob of fresh butter and serve with chips, watercress and your favourite mustard.']
+    return render_template('recipe.html', instruction=instruction,
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
 
