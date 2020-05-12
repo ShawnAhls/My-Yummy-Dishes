@@ -61,7 +61,7 @@ h3 {
     color:green;
 }
 
-a {
+.card-link {
     color: black;
 }
 
@@ -105,13 +105,19 @@ a {
 /*---- Home Page Ends ----*/
 /*---- Displays Recipes Starts ----*/
 
-.multi-column {
-    margin-top: 50px;
-    column-count: 2;
-    column-gap: 35px;
-    column-fill: auto;
+#display-buttons {
+    float: right;
+    margin: 5px;
 }
 
+.display-button {
+    color: white;
+}
+
+.display-button:hover {
+    color: yellow;
+    text-decoration: none;
+}
 /*---- Display Recipes Ends ----*/
 /*---- Add Recipes Starts ----*/
 
