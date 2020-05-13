@@ -15,7 +15,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', categories=mongo.db.categories.find())
 
 
 @app.route('/display_recipes')
@@ -48,12 +48,15 @@ def edit_recipe():
 
 @app.route('/recipe')
 def recipe():
-    instruction = ['1. Heat a splash of vegetable oil in a hot pan. Season the steak with salt and pepper, then put in the hot pan. Cook for 2-3 minutes on each side (for medium-rare) until the outside is brown and starting to crisp at the edges, then set aside on a warm plate to rest',
-                   '2. Return the pan to the heat and add a large knob of butter along with the chopped anchovy fillets and capers. Stir to heat through and scrape up any crispy bits from the base of the pan.',
-                   '3. Return the steak to the pan along with any resting juices and spoon the hot butter over to coat. Top with a knob of fresh butter and serve with chips, watercress and your favourite mustard.']
-    return render_template('recipe.html', instruction=instruction,
+    return render_template('recipe.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
+
+
+@app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
+def delete(recipe_id):
+    mongo.db.recipes.remove({'recipe_id': ObjectId()})
+    return redirect('recipe.html')
 
 
 @app.route('/categories')

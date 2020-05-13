@@ -71,7 +71,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon2">Ingredients</span>
         </div>
-        <p class="form-control" aria-label="With textarea">{{ recipe.ingredients_description|join(', ')}}</p>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients_description|join(', ')}}</textarea>
     </div>
 </section>
 <!--- Ingredients Ends -->
@@ -81,11 +81,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Method</span>
         </div>
-        <div id="method-text" class="form-control" aria-label="With textarea">
-            {% for instruction_element in instruction %}
-            <p>{{ instruction_element }} </p>
-            {% endfor %}
-        </div>
+        <textarea class="form-control" aria-label="With textarea">{{ recipe.method_instruction|join(', ')}}</textarea>
     </div>
 </section>
 <!--- Method Ends -->
