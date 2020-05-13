@@ -15,14 +15,14 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', categories=mongo.db.categories.find())
+    return render_template('home.html',
+                           recipes=mongo.db.recipes.find())
 
 
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
-                           recipes=mongo.db.recipes.find(),
-                           categories=mongo.db.categories.find())
+                           recipes=mongo.db.recipes.find())
 
 
 @app.route('/display_recipes_cat/<category_name>', methods=['GET', 'POST'])
@@ -33,7 +33,7 @@ def display_recipes_cat(category_name):
 
 @app.route('/add_recipe', methods=["GET", "POST"])
 def add_recipe():
-    add_recipe = request.form.get('recipe_name'),
+    add_recipe = request.form.get('recipe_name')
     mongo.db.recipes.insert({'recipe_name': add_recipe})
     return render_template('add-recipe.html',
                            recipes=mongo.db.recipes.find())
