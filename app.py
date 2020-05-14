@@ -12,7 +12,7 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:R00tUser@myfirstcluster-kwp3n.mong
 mongo = PyMongo(app)
 
 
-@app.route('/', methods={'GET', 'POST'})
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/home')
 def home():
     return render_template('home.html',
