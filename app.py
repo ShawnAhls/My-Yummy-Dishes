@@ -16,7 +16,8 @@ mongo = PyMongo(app)
 @app.route('/home')
 def home():
     return render_template('home.html',
-                           recipes=mongo.db.recipes.find())
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.categories.find())
 
 
 @app.route('/display_recipes')
@@ -59,7 +60,7 @@ def delete(recipe_id):
     return redirect('recipe.html')
 
 
-@app.route('/categories')
+@app.route('/categories/')
 def categories():
     return render_template('category.html',
                            categories=mongo.db.categories.find())
