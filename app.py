@@ -20,14 +20,7 @@ def home():
                            categories=mongo.db.categories.find())
 
 
-@app.route('/search')
-def search():
-    
-
-
-
-
-@app.route('/display_recipes')
+@app.route('/display/recipes')
 def display_recipes():
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find())
