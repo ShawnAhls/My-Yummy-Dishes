@@ -25,11 +25,11 @@ def display_recipes():
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find())
 
-"""
-@app.route('/display_recipes_cat/<category_name>', methods=['GET', 'POST'])
-def display_recipes_cat(category_name):
-    all_categories = mongo.db.categories.find({'category_name': category_name})
-    return render_template('display-recipes.html', categories=all_categories)"""
+
+@app.route('/display_recipes_cat/<category_id>')
+def display_recipes_cat(category_id):
+    all_categories = mongo.db.categories.find({'category_id': category_id})
+    return render_template('display-recipes.html', categories=all_categories)
 
 
 @app.route('/add_recipe', methods=["GET", "POST"])
@@ -46,6 +46,22 @@ def edit_recipe(recipe_id):
     all_categories = mongo.db.categories.find()
     return render_template('edit-recipe.html', recipes=the_recipe,
                            categories=all_categories)
+
+
+@app.route('/recipe/update/<recipe_id>', methods=['POST'])
+def update(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update({"_id": ObjectId(recipe_id)},
+                   {
+        'category_name': request.form.get['cartegory_name'],
+        'recipe_name': request.form.get['recipe_name'],
+        'ingredients_description': request.form.get['ingredients_description'],
+        'method_instruction': request.form.get['method_instruction'],
+        'prep_time': request.form.get['prep_time'],
+        'cooking_time': request.form.get['cooking_time'],
+        'serving': request.form.get['serving']
+    })
+    return redirect(url_for('display_recipes'))
 
 
 @app.route('/recipe')
