@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 
 {% block content%}
+{% for recipe in recipes %}
+<h2>Editing {{ recipe.recipe_name }}</h2> 
 
-<h2>Editing  {{ recipe.recipe_name }}</h2> 
 <section class="add">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -11,11 +12,7 @@
         <select class="custom-select" id="category" name="category_name">
             <option selected>Choose...</option>
             {% for category in categories %}
-            {% if category.category_name == recipe.category_name %}
-            <option value="{{ category.category_name }}" selected>{{ category.category_name }} </option>
-            {% else %}
-            <option value="{{ category.category_name }}">{{ category.category_name }} </option>
-            {% endif %}
+                <option value="{{ category.category_name }}">{{ category.category_name }} </option>
             {% endfor %}
         </select>
     </div>
@@ -25,7 +22,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">Recipe Name</span>
             </div>
-            <input type="text" class="form-control" placeholder="{{ recipe.recipe_name }}" >
+            
+            <input type="text" class="form-control" value="{{ recipe.recipe_name }}" >
         </div>
 </section>
 <section class="add">
@@ -77,7 +75,7 @@
     <input type="text" class="form-control" placeholder="{{ recipe.serving }}" >
     </div>
 </section>
-
+{% endfor %}
 <section>
     <div class="buttons">
         <a href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
