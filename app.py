@@ -28,7 +28,8 @@ def display_recipes():
 
 @app.route('/display_recipes_cat/<category_name>', methods=['GET', 'POST'])
 def display_recipes_cat(category_name):
-    results = mongo.db.recipes.find({'category_name': category_name})
+    if request.method == 'GET':
+        results = mongo.db.recipes.find({'category_name': category_name})
     return render_template('display-recipes.html', recipes=results)
 
 
@@ -40,11 +41,12 @@ def add_recipe():
                            recipes=mongo.db.recipes.find())
 
 
-@app.route('/edit_recipe')
-def edit_recipe():
-    return render_template('edit-recipe.html',
-                           recipes=mongo.db.recipes.find(),
-                           categories=mongo.db.categories.find())
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    all_categories = mongo .db.categories.find()
+    return render_template('edit-recipe.html', recipe=the_recipe,
+                           categories=all_categories)
 
 
 @app.route('/recipe')
