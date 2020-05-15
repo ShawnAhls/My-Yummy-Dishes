@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 
 {% block content %}
+
+<h2>Recipes</h2>
 {% for recipe in recipes %}
-<h2>{{ recipe.category_name }} Recipes</h2>
     <section>
     <div class="modal" id="delete" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

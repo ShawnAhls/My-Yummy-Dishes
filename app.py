@@ -25,12 +25,11 @@ def display_recipes():
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find())
 
-
+"""
 @app.route('/display_recipes_cat/<category_name>', methods=['GET', 'POST'])
 def display_recipes_cat(category_name):
-    if request.method == 'GET':
-        results = mongo.db.recipes.find({'category_name': category_name})
-    return render_template('display-recipes.html', recipes=results)
+    all_categories = mongo.db.categories.find({'category_name': category_name})
+    return render_template('display-recipes.html', categories=all_categories)"""
 
 
 @app.route('/add_recipe', methods=["GET", "POST"])
