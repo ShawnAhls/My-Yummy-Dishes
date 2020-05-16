@@ -2,22 +2,22 @@
 
 {% block content%}
 <h2>Add Recipe</h2>
-{% for recipe in recipes %}
-<form action="{{ url_for('add_recipe') }}" method="POST">
+
+<form action="{{ url_for('add_recipe') }}">
     <section class="add">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Category</label>
             </div>
             <select class="custom-select" id="category" name="category_name">
-                <option selected>Choose...</option>
-                <option value="1">Beef</option>
-                <option value="2">Lamb</option>
-                <option value="3">Chicken</option>
-                <option value="4">Fish</option>
+                <option  disabled selected>Choose...</option>
+                {% for category in categories %}
+                <option value="{{category.category_name}}">{{ category.category_name }}</option>
+                {% endfor %}
             </select>
         </div>
-    </section>    
+    </section>  
+    {% for recipe in recipes %}  
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -27,7 +27,7 @@
         </div>
     </section>
     <section class="add">
-        <!--- <label for="basic-url">Image of your Recipe</label> --->
+        <label for="basic-url">Image of your Recipe</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Url of Image</span>
@@ -40,7 +40,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">Ingredients</span>
             </div>
-            <textarea id="ingredient_description" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="ingredient_description" name="ingredient_description" class="form-control" aria-label="With textarea"></textarea>
         </div>
     </section>
     <section class="add">
@@ -48,7 +48,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">Method</span>
             </div>
-            <textarea id="method_instruction" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="method_instruction" name="method_instruction" class="form-control" aria-label="With textarea"></textarea>
         </div>
     </section>
     <section class="add">
@@ -56,7 +56,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon4">Prep Time in mins</span>
             </div>
-        <input id="prep_time" type="text" class="form-control" placeholder="Prep Time" >
+        <input id="prep_time" name="prep_time" type="text" class="form-control" placeholder="Prep Time" >
         </div>
     </section>
     <section class="add">
@@ -64,7 +64,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon5">Cooking Time in mins</span>
             </div>
-        <input id="cooking_time" type="text" class="form-control" placeholder="Cooking Time" >
+        <input id="cooking_time" name="cooking_time" type="text" class="form-control" placeholder="Cooking Time" >
         </div>
     </section>
     <section class="add">
@@ -72,7 +72,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon6">Serving</span>
             </div>
-        <input id="serving" type="text" class="form-control" placeholder="Serving" >
+        <input id="serving" name="serving" type="text" class="form-control" placeholder="Serving" >
         </div>
     </section>
     <section>

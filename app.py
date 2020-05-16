@@ -32,12 +32,12 @@ def display_recipes_cat(category_id):
     return render_template('display-recipes.html', categories=all_categories)
 
 
-@app.route('/add_recipe', methods=["GET", "POST"])
+@app.route('/add_recipe')
 def add_recipe():
-    add_recipe = request.form.get('recipe_name')
-    mongo.db.recipes.insert({'recipe_name': add_recipe})
+    all_categories = mongo.db.categories.find()
+    category_list = [category for category in all_categories]
     return render_template('add-recipe.html',
-                           recipes=mongo.db.recipes.find())
+                           categories=category_list)
 
 
 @app.route('/edit_recipe/<recipe_id>')
