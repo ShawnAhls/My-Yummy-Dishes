@@ -80,8 +80,8 @@
 
     <section>
         <div class="buttons">
-            <a href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
-                tabindex="-1" role="button" type="submit" name="action">Add</a>
+            <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
+                 type="submit" name="action">Add</button>
                 {% for recipe in recipes %} 
             <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm"
                 tabindex="-1" role="button">Back</a>

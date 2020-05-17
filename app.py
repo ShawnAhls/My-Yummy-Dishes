@@ -20,7 +20,7 @@ def home():
                            categories=mongo.db.categories.find())
 
 
-@app.route('/display/recipes')
+@app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find())
@@ -40,20 +40,20 @@ def add_recipe():
                            categories=category_list)
 
 
-@app.route('/insert_recipe', methods=["POST", "GET"])
+@app.route('/insert_recipe', methods=["POST"])
 def new_recipe():
-    recipes = mongo.db.recipes
     new_recipe = {
-        'category_name': request.form.get['cartegory_name'],
-        'recipe_name': request.form.get['recipe_name'],
-        'ingredients_description': request.form.get['ingredients_description'],
-        'method_instruction': request.form.get['method_instruction'],
-        'prep_time': request.form.get['prep_time'],
-        'cooking_time': request.form.get['cooking_time'],
-        'serving': request.form.get['serving']
+        'category_name': request.form.get('cartegory_name'),
+        'recipe_name': request.form.get('recipe_name'),
+        'ingredients_description': request.form.get('ingredients_description'),
+        'method_instruction': request.form.get('method_instruction'),
+        'prep_time': request.form.get('prep_time'),
+        'cooking_time': request.form.get('cooking_time'),
+        'serving': request.form.get('serving')
     }
-    recipes.insert(new_recipe)
-    return render_template('display_recipes.html', recipes=new_recipe)
+    mongo.db.recipes.insert_one(new_recipe)
+    print("Recipe Added")
+    return render_template('recipe.html')
 
 
 @app.route('/edit_recipe/<recipe_id>')

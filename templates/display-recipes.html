@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger"><a href="{{url_for('display_recipes')}}">Delete</a></button>
+                    <button type="button" class="btn btn-danger"><a href="{{url_for('display_recipes', recipe_id=recipe._id)}}">Delete</a></button>
                 </div>
             </div>
         </div>
