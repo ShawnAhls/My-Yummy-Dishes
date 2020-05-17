@@ -23,7 +23,10 @@ def home():
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
-                           recipes=mongo.db.recipes.find())
+                           recipes=mongo.db.recipes.find(),
+                           categories=mongo.db.categories.find())
+
+
 
 """
 @app.route('/display_recipes_cat/<category_id>')
@@ -89,8 +92,8 @@ def recipe(recipe_id):
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
 def delete(recipe_id):
-    mongo.db.recipes.remove({'recipe_id': ObjectId()})
-    return redirect('recipe.html')
+    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    return redirect(url_for('display_recipes'))
 
 
 @app.route('/categories/')

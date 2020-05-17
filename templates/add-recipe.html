@@ -5,7 +5,6 @@
 <h2>Add Recipe</h2>
 
 <form action="{{ url_for('new_recipe') }}" method="POST">
- 
     <section class="add">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -19,7 +18,6 @@
             </select>
         </div>
     </section>  
-
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -77,18 +75,14 @@
         <input id="serving" name="serving" type="text" class="form-control" placeholder="Serving" >
         </div>
     </section>
-
     <section>
         <div class="buttons">
             <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
-                 type="submit" name="action">Add</button>
+                type="submit" name="action">Add</button>
                 {% for recipe in recipes %} 
-            <button href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm"
-                >Back</button>
+            <button href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm">Back</button>
                 {% endfor %}
         </div>
     </section>
-
 </form>
-
 {% endblock %}
