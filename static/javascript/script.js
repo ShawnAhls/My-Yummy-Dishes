@@ -1,3 +1,3 @@
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+$( "#recipe-delete" ).click(function() {
+  $( "recipe_id" ).remove();
+});

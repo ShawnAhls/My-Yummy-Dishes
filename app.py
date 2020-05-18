@@ -1,13 +1,17 @@
 import os
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-
+from wtforms import Form, StringField, PasswordField, SubmitField, validators
+from wtforms.validators import DataRequired, Length, Email, EqualTo
+from flask_wtf import FlaskForm
 
 app = Flask(__name__)
+app.secret_key = os.urandom(32)
 
 app.config["MONGO_DBNAME"] = 'myYummyDishes'
 app.config["MONGO_URI"] = 'mongodb+srv://root:R00tUser@myfirstcluster-kwp3n.mongodb.net/myYummyDishes?retryWrites=true&w=majority'
+
 
 mongo = PyMongo(app)
 
@@ -18,6 +22,48 @@ def home():
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
+
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(),
+                           Length(min=4, max=25)])
+    email = StringField('Email Address', validators=[DataRequired(),
+                        Length(min=6, max=35)])
+    password = PasswordField('New Password', [
+                             validators.DataRequired(),
+                             validators.EqualTo('confirm',
+                             message='Passwords must match')])
+    confirm = PasswordField('Confirm Password',
+                            validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign Up')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Thanks for registering {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
 
 
 @app.route('/display_recipes')
