@@ -13,6 +13,10 @@ header {
     height: 110px;
 }
 
+.message {
+    margin-top: 20px;
+}
+
 .social {
     margin-top: 70px;
     padding-bottom: 15px;

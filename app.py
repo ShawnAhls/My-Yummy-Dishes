@@ -1,10 +1,8 @@
 import os
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from wtforms import Form, StringField, PasswordField, SubmitField, validators
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-from flask_wtf import FlaskForm
+import bcrypt
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -19,51 +17,34 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
+    if 'username' in session:
+        flash('You are logged in as ' + session['username'])
+
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
 
 
-class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(),
-                           Length(min=4, max=25)])
-    email = StringField('Email Address', validators=[DataRequired(),
-                        Length(min=6, max=35)])
-    password = PasswordField('New Password', [
-                             validators.DataRequired(),
-                             validators.EqualTo('confirm',
-                             message='Passwords must match')])
-    confirm = PasswordField('Confirm Password',
-                            validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        flash('Thanks for registering {form.username.data}!', 'success')
-        return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form)
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name': request.form['username']})
 
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name': request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('home'))
 
-class LoginForm(FlaskForm):
-    email = StringField('Email',
-                        validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+        flash('That username already exists!')
+
+    return render_template('register.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
-            flash('You have been logged in!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html')
 
 
 @app.route('/display_recipes')

@@ -1,70 +1,46 @@
 {% extends 'base.html'%}
 
 {% block content%}
-<section>
-    <div>
-        <form method="POST" action="">
-            <fieldset class="form-group"> 
-                <h2>Join Today</h2>
-                <div class="form-group">
-                    {{ form.username.label(class="form-control-label") }}
-                    {% if form.username.errors %}
-                         {{ form.username(class="form-control form-control-lg is-invalid") }}
-                         <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor%}
-                         </div>
-                    {% else %}
-                        {{ form.username(class="form-control form-control-lg") }}
-                    {% endif%}
-                </div>
-                <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
-                    {% if form.email.errors %}
-                         {{ form.email(class="form-control form-control-lg is-invalid") }}
-                         <div class="invalid-feedback">
-                            {% for error in form.email.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor%}
-                         </div>
-                    {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
-                    {% endif%}
-                </div>
-                <div class="form-group">
-                    {{ form.password.label(class="form-control-label") }}
-                    {% if form.password.errors %}
-                         {{ form.password(class="form-control form-control-lg is-invalid") }}
-                         <div class="invalid-feedback">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor%}
-                         </div>
-                    {% else %}
-                        {{ form.password(class="form-control form-control-lg") }}
-                    {% endif%}
-                </div>
-                <div class="form-group">
-                    {{ form.confirm.label(class="form-control-label") }}
-                    {% if form.confirm.errors %}
-                         {{ form.confirm(class="form-control form-control-lg is-invalid") }}
-                         <div class="invalid-feedback">
-                            {% for error in form.confirm.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor%}
-                         </div>
-                    {% else %}
-                        {{ form.confirm(class="form-control form-control-lg") }}
-                    {% endif%}
-                </div>
-            </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+<h2>Registration</h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}   
+    {% endif %}
+{% endwith%}
+<form method="POST" action="{{ url_for('register')}}">
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon0">Username</span>
             </div>
-        </form>  
-    </div>
-</section>
+        <input name="username" type="text" class="form-control" placeholder="Username" >
+        </div>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Password</span>
+            </div>
+        <input name="password" type="text" class="form-control" placeholder="Password" >
+        </div>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">Confirm Password</span>
+            </div>
+        <input name="confirm password" type="text" class="form-control" placeholder="Confirm Password" >
+        </div>
+    </section>
+    <section>
+        <div class="buttons">
+            <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
+                type="submit" name="action">Register</button>
+        </div>        
+    </section>
+</form>
 <section>
     <div class="border-top pt-3">
         <small class="text-muted">
@@ -72,10 +48,4 @@
         </small> 
     </div>
 </section>
-
-
-
-
-
-
 {% endblock %}
