@@ -2,7 +2,7 @@
 {% block content %}
 
 <!--- Home --->
-<h2>Home </h2>
+<h5 class="home-sign-up">You wil need an account to add, edit and remove your recipes. <a href="{{ url_for('register')}}"> Sign Up</a></h5>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}

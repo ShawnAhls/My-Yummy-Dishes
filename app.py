@@ -58,6 +58,13 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/sign_out')
+def logout():
+    session.clear('username')
+    flash('You are now signed out!')
+    return redirect(url_for('home'))
+
+
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
@@ -75,10 +82,11 @@ def display_recipes_cat(category_id):
 
 @app.route('/add_recipe')
 def add_recipe():
-    all_categories = mongo.db.categories.find()
-    category_list = [category for category in all_categories]
-    return render_template('add-recipe.html',
-                           categories=category_list)
+    if session:
+        return render_template('add-recipe.html',
+                               all_categories=mongo.db.categories.find())
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/new_recipe', methods=["POST"])

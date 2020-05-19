@@ -69,6 +69,11 @@ h5 {
     line-height: 36px;
 }
 
+.home-sign-up {
+    text-align: center;
+    margin-top: 80px;
+}
+
 .card-link {
     color: black;
 }
