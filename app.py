@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, url_for, redirect, request, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -12,6 +12,8 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:R00tUser@myfirstcluster-kwp3n.mong
 
 
 mongo = PyMongo(app)
+
+users = mongo.db.users
 
 
 @app.route('/')
@@ -28,34 +30,51 @@ def home():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        users = mongo.db.users
-        existing_user = users.find_one({'name': request.form['username']})
+        form = request.form.to_dict()
 
-        if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'name': request.form['username'], 'password': hashpass})
-            session['username'] = request.form['username']
-            return redirect(url_for('home'))
+        if form['password'] == form['password']:
+            user = users.find_one({'name': form['username']})
+            if user:
+                flash(f"{form['username']} already exists!")
+            else:
+                hash_pass = generate_password_hash(form['password'])
+                users.insert_one({
+                                  'username': form['username'],
+                                  'password': hash_pass
+                                })
+                user_in_db = users.find_one({"username": form['username']})
+            if user_in_db:
+                session['user'] = user_in_db['username']
+                return redirect(url_for('home', user=user_in_db['username']))
+    else:
+        flash("Passwords dont match!")
+    return render_template("register.html")
 
-        flash('That username already exists!')
 
-    return render_template('register.html')
-
-
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login', methods=['GET'])
 def login():
-    if request.method == 'POST':
-        users = mongo.db.users
-        login_user = users.find_one({'name': request.form['username']})
+    if 'user' in session:
+        user_in_db = users.find_one({"name": session['user']})
+        if user_in_db:
+            flash('You are signed in already')
+    else:
+        return render_template('login.html')
 
-        if login_user:
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
-                session['username'] = request.form['username']
-        return redirect(url_for('home'))
 
-        flash('Invalid Username/Password combination')
-
-    return render_template('login.html')
+@app.route('/auth_user', methods=['GET', 'POST'])
+def auth():
+    form = request.form.to_dict()
+    user_in_db = users.find_one({"name": form['username']})
+    if user_in_db:
+        if check_password_hash(user_in_db['password'], form['password']):
+            session['user'] = form['user']
+            return redirect(url_for('home'))
+        else:
+            flash('Username/Password are not a match')
+            return redirect(url_for('login'))
+    else:
+        flash('You must Register!')
+        return redirect(url_for('register'))
 
 
 @app.route('/sign_out')
