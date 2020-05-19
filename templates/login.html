@@ -2,7 +2,7 @@
 
 {% block content%}
 <h2>Login</h2>
-<form method="POST" action="{{ url_for('register')}}">
+<form method="POST" action="{{ url_for('login')}}">
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -21,7 +21,7 @@
     </section>
     <section>
         <div class="buttons">
-            <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
+            <button href="{{url_for('home')}}" class="btn btn-primary btn-sm"
                 type="submit" name="action">Login</button>
         </div>        
     </section>
