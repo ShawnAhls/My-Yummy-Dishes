@@ -3,6 +3,13 @@
 
 <!--- Home --->
 <h2>Home </h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}   
+    {% endif %}
+{% endwith%}
 <section>
     <div class="row row-cols-1 row-cols-md-3">
         {% for recipe in recipes %}

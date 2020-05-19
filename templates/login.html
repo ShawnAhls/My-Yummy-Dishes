@@ -2,13 +2,20 @@
 
 {% block content%}
 <h2>Login</h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}   
+    {% endif %}
+{% endwith%}
 <form method="POST" action="{{ url_for('login')}}">
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon0">Username</span>
             </div>
-        <input name="username" type="text" class="form-control" placeholder="Username" >
+        <input name="username" type="text" class="form-control validate" placeholder="Username" >
         </div>
     </section>
     <section class="add">
@@ -16,7 +23,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Password</span>
             </div>
-        <input name="password" type="text" class="form-control" placeholder="Password" >
+        <input name="password" type="password" class="form-control validate" placeholder="Password" >
         </div>
     </section>
     <section>
