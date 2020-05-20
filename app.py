@@ -46,7 +46,7 @@ def register():
                                 'name': form['username'],
                                 'password': hash_pass
                                 })
-                user = users.find_one({"username": form['name']})
+                user = users.find_one({"name": form['username']})
             if user:
                 session['user'] = user['name']
                 return redirect(url_for('home'))
@@ -116,11 +116,12 @@ def new_recipe():
     new_recipe = {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
-        'ingredients_description': request.form.get('ingredients_description'),
-        'method_instruction': request.form.get('method_instruction'),
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
-        'serving': request.form.get('serving')
+        'serving': request.form.get('serving'),
+        'username': session['user']
     }
     mongo.db.recipes.insert_one(new_recipe)
     return redirect('display_recipes')
@@ -142,13 +143,14 @@ def edit_recipe(recipe_id):
 def update(recipe_id):
     recipes.update({"_id": ObjectId(recipe_id)},
                    {
-        'category_name': request.form.get['cartegory_name'],
-        'recipe_name': request.form.get['recipe_name'],
-        'ingredients_description': request.form.get['ingredients_description'],
-        'method_instruction': request.form.get['method_instruction'],
-        'prep_time': request.form.get['prep_time'],
-        'cooking_time': request.form.get['cooking_time'],
-        'serving': request.form.get['serving']
+        'category_name': request.form.get('cartegory_name'),
+        'recipe_name': request.form.get('recipe_name'),
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
+        'prep_time': request.form.get('prep_time'),
+        'cooking_time': request.form.get('cooking_time'),
+        'serving': request.form.get('serving'),
+        'username': session['user']
     })
     return redirect(url_for('display_recipes'))
 
@@ -170,8 +172,8 @@ def delete(recipe_id):
 
 @app.route('/categories/')
 def categories():
-        return render_template('category.html',
-                               categories=mongo.db.categories.find())
+    return render_template('category.html',
+                            categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':
