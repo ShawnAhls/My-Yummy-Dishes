@@ -162,15 +162,16 @@ def recipe(recipe_id):
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
 def delete(recipe_id):
     if session:
-        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+        flash('Recipe Deleted')
         return redirect(url_for('display_recipes'))
     return redirect(url_for('login'))
 
 
 @app.route('/categories/')
 def categories():
-    return render_template('category.html',
-                           categories=mongo.db.categories.find())
+        return render_template('category.html',
+                               categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':
