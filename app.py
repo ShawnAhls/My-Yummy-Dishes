@@ -166,7 +166,7 @@ def delete(recipe_id):
     if session:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
-        return redirect(url_for('display_recipes'))
+        return render_template('display-recipes.html')
     return redirect(url_for('login'))
 
 

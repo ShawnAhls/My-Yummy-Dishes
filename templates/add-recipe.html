@@ -3,6 +3,13 @@
 {% block content%}
 
 <h2>Add Recipe</h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}   
+    {% endif %}
+{% endwith%}
 
 <form action="{{ url_for('new_recipe') }}" method="POST">
     <section class="add">
