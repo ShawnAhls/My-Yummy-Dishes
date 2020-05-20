@@ -14,14 +14,14 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:R00tUser@myfirstcluster-kwp3n.mong
 mongo = PyMongo(app)
 
 users = mongo.db.users
+recipes = mongo.db.recipes
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     if 'username' in session:
-        flash('You are logged in as ' + session['username'])
-
+        flash("You are logged in" + session['username'])
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
@@ -29,45 +29,48 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if 'user' in session:
+        flash('You are already sign in!')
+        return redirect(url_for('home'))
+
     if request.method == 'POST':
         form = request.form.to_dict()
 
-        if form['password'] == form['password']:
+        if form['password'] == form['password1']:
             user = users.find_one({'name': form['username']})
             if user:
                 flash(f"{form['username']} already exists!")
             else:
                 hash_pass = generate_password_hash(form['password'])
                 users.insert_one({
-                                  'username': form['username'],
-                                  'password': hash_pass
+                                'name': form['username'],
+                                'password': hash_pass
                                 })
-                user_in_db = users.find_one({"username": form['username']})
-            if user_in_db:
-                session['user'] = user_in_db['username']
-                return redirect(url_for('home', user=user_in_db['username']))
+                user = users.find_one({"username": form['username']})
+            if user:
+                session['user'] = user['name']
+                return redirect(url_for('home'))
     else:
-        flash("Passwords dont match!")
+        """flash("Passwords dont match!")"""
     return render_template("register.html")
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if 'user' in session:
-        user_in_db = users.find_one({"name": session['user']})
-        if user_in_db:
-            flash('You are signed in already')
-    else:
-        return render_template('login.html')
+    if "user" in session:
+        user = users.find_one({"name": session['username']})
+        if user:
+            return redirect(url_for('home'))
+    return render_template('login.html')
 
 
 @app.route('/auth_user', methods=['GET', 'POST'])
 def auth():
     form = request.form.to_dict()
-    user_in_db = users.find_one({"name": form['username']})
-    if user_in_db:
-        if check_password_hash(user_in_db['password'], form['password']):
-            session['user'] = form['user']
+    user = users.find_one({"name": form['username']})
+    if user:
+        if check_password_hash(user['password'], form['password']):
+            session['user'] = form['username']
             return redirect(url_for('home'))
         else:
             flash('Username/Password are not a match')
@@ -79,7 +82,7 @@ def auth():
 
 @app.route('/sign_out')
 def logout():
-    session.clear('username')
+    session.pop('user')
     flash('You are now signed out!')
     return redirect(url_for('home'))
 
@@ -123,18 +126,20 @@ def new_recipe():
     return redirect('display_recipes')
 
 
-@app.route('/edit_recipe/<recipe_id>')
+@app.route('/edit_recipe/<recipe_id>', methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-    all_categories = mongo.db.categories.find()
-    category_list = [category for category in all_categories]
-    return render_template('edit-recipe.html', recipes=the_recipe,
-                           categories=category_list)
+    if session:
+        the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+        all_categories = mongo.db.categories.find()
+        category_list = [category for category in all_categories]
+        return render_template('edit-recipe.html', recipes=the_recipe,
+                               categories=category_list)
+    else:
+        return redirect(url_for('login'))
 
 
-@app.route('/recipe/update/<recipe_id>', methods=['POST'])
+@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
 def update(recipe_id):
-    recipes = mongo.db.recipes
     recipes.update({"_id": ObjectId(recipe_id)},
                    {
         'category_name': request.form.get['cartegory_name'],
@@ -156,8 +161,10 @@ def recipe(recipe_id):
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
 def delete(recipe_id):
-    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-    return redirect(url_for('display_recipes'))
+    if session:
+        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+        return redirect(url_for('display_recipes'))
+    return redirect(url_for('login'))
 
 
 @app.route('/categories/')
