@@ -21,7 +21,7 @@ recipes = mongo.db.recipes
 @app.route('/home')
 def home():
     if 'username' in session:
-        flash("You are logged in" + session['username'])
+        flash("You are logged in" + session['user'])
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
@@ -46,7 +46,7 @@ def register():
                                 'name': form['username'],
                                 'password': hash_pass
                                 })
-                user = users.find_one({"username": form['username']})
+                user = users.find_one({"username": form['name']})
             if user:
                 session['user'] = user['name']
                 return redirect(url_for('home'))
@@ -58,7 +58,7 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if "user" in session:
-        user = users.find_one({"name": session['username']})
+        user = users.find_one({"name": session['user']})
         if user:
             return redirect(url_for('home'))
     return render_template('login.html')
@@ -82,7 +82,7 @@ def auth():
 
 @app.route('/sign_out')
 def logout():
-    session.pop('user')
+    session.clear()
     flash('You are now signed out!')
     return redirect(url_for('home'))
 
