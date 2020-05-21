@@ -117,7 +117,6 @@ def new_recipe():
     new_recipe = {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
-        'image': request.form.get('image'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
@@ -148,7 +147,6 @@ def update(recipe_id):
                    {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
-        'image': request.form.get('image'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
