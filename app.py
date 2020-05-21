@@ -108,7 +108,8 @@ def add_recipe():
         return render_template('add-recipe.html',
                                all_categories=mongo.db.categories.find())
     else:
-        return redirect(url_for('login'))
+        flash('You need Sign in first')
+    return redirect(url_for('home'))
 
 
 @app.route('/new_recipe', methods=["POST"])
@@ -116,6 +117,7 @@ def new_recipe():
     new_recipe = {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
+        'image': request.form.get('image'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
@@ -136,7 +138,8 @@ def edit_recipe(recipe_id):
         return render_template('edit-recipe.html', recipes=the_recipe,
                                categories=category_list)
     else:
-        return redirect(url_for('login'))
+        flash('You need Sign in first')
+    return redirect(url_for('home'))
 
 
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
@@ -145,6 +148,7 @@ def update(recipe_id):
                    {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
+        'image': request.form.get('image'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
@@ -167,7 +171,9 @@ def delete(recipe_id):
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
         return render_template('display-recipes.html')
-    return redirect(url_for('login'))
+    else:
+        flash('You need Sign in first')
+    return redirect(url_for('home'))
 
 
 @app.route('/categories/')
