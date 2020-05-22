@@ -94,14 +94,6 @@ def display_recipes():
                            categories=mongo.db.categories.find())
 
 
-"""
-@app.route('/display_recipes_cat/<category_id>')
-def display_recipes_cat(category_id):
-    all_categories = mongo.db.categories.find({'category_id': category_id})
-    return render_template('display-recipes.html', categories=all_categories)
-"""
-
-
 @app.route('/add_recipe')
 def add_recipe():
     if session:
