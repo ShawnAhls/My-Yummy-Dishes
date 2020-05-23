@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from os import path
 if path.exists("env.py"):
-  import env
+    import env
 
 
 app = Flask(__name__)
