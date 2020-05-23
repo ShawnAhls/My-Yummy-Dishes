@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 app.config["MONGO_DBNAME"] = 'myYummyDishes'
-app.config["MONGO_URI"] = 'MONGO_URI'
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 
 mongo = PyMongo(app)
