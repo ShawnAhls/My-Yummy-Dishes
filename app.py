@@ -123,6 +123,9 @@ def logout():
 
 @app.route('/search', methods=["GET", "POST"])
 def search():
+    
+    # Ables the user to search with keywords
+
     keywords = request.form.get('search')
     query = ({'$text': {'$search': keywords}})
     results = mongo.db.recipes.find(query)
@@ -187,6 +190,9 @@ def edit_recipe(recipe_id):
 
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
 def update(recipe_id):
+
+    # Lets the user update the edited recipe
+
     recipes.update({"_id": ObjectId(recipe_id)},
                    {
         'category_name': request.form.get('cartegory_name'),
@@ -209,6 +215,9 @@ def recipe(recipe_id):
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
 def delete(recipe_id):
+
+    # The user of the recipe delete the recipe
+
     if session:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
