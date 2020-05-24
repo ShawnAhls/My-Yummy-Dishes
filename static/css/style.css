@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Luckiest+Guy&display=swap');
 
 body {
     margin: 0;
@@ -115,10 +114,6 @@ h5 {
     display: inline-block;
 }
 
-.login {
-    float: right;
-}
-
 /*---- Home Page Ends ----*/
 /*---- Displays Recipes Starts ----*/
 
@@ -149,4 +144,7 @@ h5 {
 }
 
 /*---- Add Recipes Ends ----*/
-/*---- Recipes Starts ----*/
+
+.time {
+    float: right;
+}

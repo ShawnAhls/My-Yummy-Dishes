@@ -5,53 +5,59 @@
 <h2>{{ recipe.recipe_name }}</h2>
 <!--- Recipe Name starts-->
 <section class="container">
-    <div class="row row-cols-1 row-cols-md-2">
+    <div class="row row-cols-12 row-cols-md-2">
         <div class="input-group recipe-image">
             <div class="input-group-prepend">     
                 <img src="{{url_for('static', filename='images/defaultimage.png')}}" class="recipe-img" alt="Beef Curry">   
             </div>
         </div>
-    <!--- Recipe Name Ends -->
-    <!--- Category starts -->
-        <div class="input-group add">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon0">Category Name</span>          
+    </div> 
+</section>       
+<!--- Recipe Name Ends -->
+<!--- Category starts -->
+<section class="container">
+    <div class="row time">
+        <div class="col-sm-12">
+            <div class="input-group add">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon0">Category Name</span>          
+                </div>
+                <p class="form-control" > {{ recipe.category_name }}</p>
             </div>
-            <p class="form-control" > {{ recipe.category_name }}</p>
-        </div>
-    <!--- Category Ends -->
-    <!--- Recipe Name starts -->
-        <div class="input-group add">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Recipe Name</span>          
+        <!--- Category Ends -->
+        <!--- Recipe Name starts -->
+            <div class="input-group add">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Recipe Name</span>          
+                </div>
+                <p class="form-control" >{{ recipe.recipe_name }}</p>
             </div>
-            <p class="form-control" >{{ recipe.recipe_name }}</p>
-        </div>
-    <!--- Recipe Name Ends -->
-    <!--- Prep Time Starts -->
-        <div class="input-group add">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon4">Prep Time</span>
+        <!--- Recipe Name Ends -->
+        <!--- Prep Time Starts -->
+            <div class="input-group add">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon4">Prep Time</span>
+                </div>
+                <p  class="form-control" placeholder="Prep Time" >{{ recipe.prep_time }} min</p>
             </div>
-            <p  class="form-control" placeholder="Prep Time" >{{ recipe.prep_time }} min</p>
-        </div>
-    <!--- Pre Time Ends -->
-    <!--- Cookng Time starts -->
-        <div class="input-group add">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon5">Cooking Time</span>
+        <!--- Pre Time Ends -->
+        <!--- Cookng Time starts -->
+            <div class="input-group add">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon5">Cooking Time</span>
+                </div>
+                <p  class="form-control" placeholder="Cooking Time" >{{ recipe.cooking_time }} min</p>
             </div>
-            <p  class="form-control" placeholder="Cooking Time" >{{ recipe.cooking_time }} min</p>
-        </div>
-    <!--- Cooking Time Ends -->
-    <!--- Serving starts -->
-        <div class="input-group add">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon6">Serving</span>
+        <!--- Cooking Time Ends -->
+        <!--- Serving starts -->
+            <div class="input-group add">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon6">Serving</span>
+                </div>
+                <p  class="form-control" placeholder="Serving" >{{ recipe.serving }}</p>
             </div>
-            <p  class="form-control" placeholder="Serving" >{{ recipe.serving }}</p>
         </div>
-    </div>
+    </div>    
 </section>
 <!--- Serving Ends -->
 <!--- Ingredients starts -->

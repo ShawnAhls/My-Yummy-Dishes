@@ -143,8 +143,8 @@ def add_recipe():
 
 @app.route('/new_recipe', methods=["POST"])
 def new_recipe():
-    if 'recipe_image' in request.files:
-        recipe_image = request.files['recipe_image']
+    recipe_image = request.files['recipe_image']
+    if recipe_image:
         mongo.save_file(recipe_image.filename, recipe_image)
         mongo.db.recipes.insert({'recipe': request.form.get('recipe'), 'recipe_image_name': recipe_image.filename})
     # Adds a new recipe to the database
