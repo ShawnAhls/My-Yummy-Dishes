@@ -115,6 +115,10 @@ h5 {
     display: inline-block;
 }
 
+.login {
+    float: right;
+}
+
 /*---- Home Page Ends ----*/
 /*---- Displays Recipes Starts ----*/
 
@@ -143,3 +147,6 @@ h5 {
     width: 250px;
     min-height: 35px;
 }
+
+/*---- Add Recipes Ends ----*/
+/*---- Recipes Starts ----*/

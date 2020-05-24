@@ -121,18 +121,6 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/search', methods=["GET", "POST"])
-def search():
-    
-    # Ables the user to search with keywords
-
-    keywords = request.form.get('search')
-    query = ({'$text': {'$search': keywords}})
-    results = mongo.db.recipes.find(query)
-    return render_template('display-recipes.html',
-                           recipes=results)
-
-
 @app.route('/display_recipes')
 def display_recipes():
     return render_template('display-recipes.html',
@@ -155,12 +143,16 @@ def add_recipe():
 
 @app.route('/new_recipe', methods=["POST"])
 def new_recipe():
-
+    if 'recipe_image' in request.files:
+        recipe_image = request.files['recipe_image']
+        mongo.save_file(recipe_image.filename, recipe_image)
+        mongo.db.recipes.insert({'recipe': request.form.get('recipe'), 'recipe_image_name': recipe_image.filename})
     # Adds a new recipe to the database
 
     new_recipe = {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
+        'recipe_image': request.form.get('recipe_image'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
@@ -168,8 +160,13 @@ def new_recipe():
         'serving': request.form.get('serving'),
         'username': session['user']
     }
-    mongo.db.recipes.insert_one(new_recipe)
+    mongo.db.recipes.insert(new_recipe)
     return redirect('display_recipes')
+
+
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
 
 
 @app.route('/edit_recipe/<recipe_id>', methods=["GET", "POST"])

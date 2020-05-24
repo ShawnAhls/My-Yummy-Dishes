@@ -13,7 +13,7 @@
 {% for recipe in recipes %}
     <section>
         <div class="col mb-4">
-            <div class="card">
+            <img src="{{url_for('file', filename=recipe['recipe_name_image'])}}" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title"><strong>Recipe Name: </strong><a class="card-link" href="{{url_for('recipe', recipe_id=recipe._id)}}">
                     {{ recipe.recipe_name }} </a><button type="button" id="display-buttons" class="btn btn-primary">
@@ -22,7 +22,6 @@
                     <a href="{{ url_for('delete', recipe_id=recipe._id)}}"> Delete</a></button></h5>
                 </div>
             </div>
-        </div>
     </section>
     {% endfor %}
     <section>

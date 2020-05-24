@@ -11,7 +11,7 @@
     {% endif %}
 {% endwith%}
 
-<form action="{{ url_for('new_recipe') }}" method="POST">
+<form action="{{ url_for('new_recipe') }}" method="POST" enctype="multipart/form-data">
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -28,6 +28,14 @@
         <input id="recipe_name" name="recipe_name" type="text" class="form-control" placeholder="Recipe Name" >
         </div>
     </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon0">URL of Image</span>
+            </div>
+        <input id="image" name="recipe_image" type="file" class="form-control" placeholder="Place URL of image" >
+        </div>
+    </section> 
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
