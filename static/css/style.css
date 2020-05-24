@@ -146,5 +146,6 @@ h5 {
 /*---- Add Recipes Ends ----*/
 
 .time {
-    float: right;
+    display: flex
+    margin-right: auto;
 }

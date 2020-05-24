@@ -143,18 +143,20 @@ def add_recipe():
 
 @app.route('/new_recipe', methods=["POST"])
 def new_recipe():
-    recipe_image = request.files['recipe_image']
+    """
+    recipe_image = request.files['recipe-image']
     if recipe_image:
         mongo.save_file(recipe_image.filename, recipe_image)
         mongo.db.recipes.insert({'recipe': request.form.get('recipe'), 'recipe_image_name': recipe_image.filename})
+        """
     # Adds a new recipe to the database
 
     new_recipe = {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
         'recipe_image': request.form.get('recipe_image'),
-        'ingredients': request.form.get('ingredients'),
-        'method': request.form.get('method'),
+        'ingredients': request.form.getlist('ingredients'),
+        'method': request.form.getlist('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
@@ -194,8 +196,8 @@ def update(recipe_id):
                    {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
-        'ingredients': request.form.get('ingredients'),
-        'method': request.form.get('method'),
+        'ingredients': request.form.getlist('ingredients'),
+        'method': request.form.getlist('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
