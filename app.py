@@ -192,8 +192,8 @@ def update(recipe_id):
 
     # Lets the user update the edited recipe
 
-    recipes.update({"_id": ObjectId(recipe_id)},
-                   {
+    mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
+                            {
         'category_name': request.form.get('cartegory_name'),
         'recipe_name': request.form.get('recipe_name'),
         'ingredients': request.form.getlist('ingredients'),
@@ -217,7 +217,7 @@ def delete(recipe_id):
 
     # The user of the recipe delete the recipe
 
-    if session:
+    if 'user' in session:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
         return render_template('display-recipes.html')
