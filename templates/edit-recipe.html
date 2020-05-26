@@ -4,83 +4,85 @@
 {% for recipe in recipes %}
 <h2>Editing {{ recipe.recipe_name }}</h2> 
 
-<section class="add">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+<form action="{{ url_for('update_recipe') }}" method="POST" enctype="multipart/form-data">
+    <section class="add">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            </div>
+            <select class="custom-select" id="category" name="category_name">
+                <option selected>Choose...</option>
+                {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }} </option>
+                {% endfor %}
+            </select>
         </div>
-        <select class="custom-select" id="category" name="category_name">
-            <option selected>Choose...</option>
-            {% for category in categories %}
-                <option value="{{ category.category_name }}">{{ category.category_name }} </option>
-            {% endfor %}
-        </select>
-    </div>
-</section>    
-<section class="add">
+    </section>    
+    <section class="add">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Recipe Name</span>
+                </div>
+                <input type="text" class="form-control" value="{{ recipe.recipe_name }}" >
+            </div>
+    </section>
+    <section class="add">
+        <!--- <label for="basic-url">Image of your Recipe</label> --->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Url of Image</span>
+            </div>
+            <input type="text" class="form-control"  placeholder="Optional" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+    </section>
+    <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Recipe Name</span>
+                <span class="input-group-text" id="basic-addon3">Ingredients</span>
             </div>
-            <input type="text" class="form-control" value="{{ recipe.recipe_name }}" >
+            <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients }}</textarea>
         </div>
-</section>
-<section class="add">
-    <!--- <label for="basic-url">Image of your Recipe</label> --->
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Url of Image</span>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Method</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea">{{ recipe.method }}</textarea>
         </div>
-        <input type="text" class="form-control"  placeholder="Optional" id="basic-url" aria-describedby="basic-addon3">
-    </div>
-</section>
-<section class="add">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Ingredients</span>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Prep Time in mins</span>
+            </div>
+        <input type="text" class="form-control" placeholder="{{ recipe.prep_time }}" >
         </div>
-        <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients }}</textarea>
-    </div>
-</section>
-<section class="add">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Method</span>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Cooking Time in mins</span>
+            </div>
+        <input type="text" class="form-control" placeholder="{{ recipe.cooking_time }}" >
         </div>
-        <textarea class="form-control" aria-label="With textarea">{{ recipe.method }}</textarea>
-    </div>
-</section>
-<section class="add">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Prep Time in mins</span>
+    </section>
+    <section class="add">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Serving</span>
+            </div>
+        <input type="text" class="form-control" placeholder="{{ recipe.serving }}" >
         </div>
-    <input type="text" class="form-control" placeholder="{{ recipe.prep_time }}" >
-    </div>
-</section>
-<section class="add">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Cooking Time in mins</span>
-        </div>
-    <input type="text" class="form-control" placeholder="{{ recipe.cooking_time }}" >
-    </div>
-</section>
-<section class="add">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Serving</span>
-        </div>
-    <input type="text" class="form-control" placeholder="{{ recipe.serving }}" >
-    </div>
-</section>
-<section>
-    <div class="buttons">
-        <a href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
-            tabindex="-1" role="button" type="submit">Update</a>
-        <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm"
-            tabindex="-1" role="button">Back</a>
-    </div>  
-</section>
+    </section>
+    <section>
+        <div class="buttons">
+            <a href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
+                tabindex="-1" role="button" type="submit">Update</a>
+            <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm"
+                tabindex="-1" role="button">Back</a>
+        </div>  
+    </section>
+</form>    
 {% endfor %}
 {% endblock %}
