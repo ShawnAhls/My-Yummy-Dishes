@@ -31,8 +31,8 @@ def home():
 
     # Loads the home page and indicates which user is logged in
 
-    if 'username' in session:
-        flash("You are logged in" + session['user'])
+    if 'user' in session:
+        flash("You are logged in " + session['user'])
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
