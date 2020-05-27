@@ -21,6 +21,7 @@ mongo = PyMongo(app)
 users = mongo.db.users
 recipes = mongo.db.recipes
 
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -137,7 +138,7 @@ def add_recipe():
     return redirect(url_for('home'))
 
 
-@app.route('/new_recipe', methods=["POST"])
+@app.route('/new_recipe', methods=["GET", "POST"])
 def new_recipe():
     """
     recipe_image = request.files['recipe-image']
@@ -156,7 +157,7 @@ def new_recipe():
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
-        'username': session['user']
+        'name': session['user']
     }
     mongo.db.recipes.insert(new_recipe)
     return redirect('display_recipes')
@@ -197,7 +198,7 @@ def update(recipe_id):
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
-        'username': session['user_name']
+        'name': session['user']
     })
     return redirect(url_for('display_recipes'))
 
