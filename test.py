@@ -77,7 +77,7 @@ class FlaskTestCase(unittest.TestCase):
         self.assertTrue(b'You need to Sign in first', response.data)
         # passed
 
-    # The user and password are for a user in the users database, to test new recipe   
+    # The user and password are for a user in the users database, to test new recipe
 
     def test_new_recipe(self):
         tester = app.test_client(self)
@@ -106,12 +106,13 @@ class FlaskTestCase(unittest.TestCase):
         # passed
 
     # Test to display a recipe
-"""
+    """
     def test_recipe_id(self):
         tester = app.test_client(self)
         response = tester.get('/recipe_id', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-"""
+    """
+
 
 if __name__ == '__main__':
     unittest.main()

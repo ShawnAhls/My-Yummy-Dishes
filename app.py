@@ -118,7 +118,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/display_recipes')
+@app.route('/recipes')
 def display_recipes():
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find(),
@@ -138,7 +138,7 @@ def add_recipe():
     return redirect(url_for('home'))
 
 
-@app.route('/new_recipe', methods=["GET", "POST"])
+@app.route('/recipe/new', methods=["POST"])
 def new_recipe():
     """
     recipe_image = request.files['recipe-image']
@@ -147,9 +147,10 @@ def new_recipe():
         mongo.db.recipes.insert({'recipe': request.form.get('recipe'), 'recipe_image_name': recipe_image.filename})
         """
     # Adds a new recipe to the database
+    import pdb; pdb.set_trace()
 
     new_recipe = {
-        'category_name': request.form.get('cartegory_name'),
+        'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
         'recipe_image': request.form.get('recipe_image'),
         'ingredients': request.form.getlist('ingredients'),

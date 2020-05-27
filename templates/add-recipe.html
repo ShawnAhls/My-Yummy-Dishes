@@ -11,19 +11,19 @@
     {% endif %}
 {% endwith%}
 
-<form action="{{ url_for('new_recipe') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ url_for('new_recipe') }}" method="POST">
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon0">Category</span>
             </div>
-        <input id="category" name="category" type="text" class="form-control" placeholder="category" >
+        <input id="category" name="category_name" type="text" class="form-control" placeholder="category" >
         </div>
     </section> 
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon0">Recipe Name</span>
+                <span class="input-group-text" id="basic-addon7">Recipe Name</span>
             </div>
         <input id="recipe_name" name="recipe_name" type="text" class="form-control" placeholder="Recipe Name" >
         </div>
@@ -31,7 +31,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon0">URL of Image</span>
+                <span class="input-group-text" id="basic-addon6">URL of Image</span>
             </div>
         <input id="image" name="recipe_image" type="text" class="form-control" placeholder="Place URL of image" >
         </div>
@@ -41,7 +41,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">Ingredients</span>
             </div>
-            <textarea id="ingredients" name="ingredient_description" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="ingredients" name="ingredients" class="form-control" aria-label="With textarea"></textarea>
         </div>
     </section>
     <section class="add">
@@ -49,7 +49,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">Method</span>
             </div>
-            <textarea id="method" name="method_instruction" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="method" name="method" class="form-control" aria-label="With textarea"></textarea>
         </div>
     </section>
     <section class="add">
@@ -80,9 +80,9 @@
         <div class="buttons">
             <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
                 type="submit" name="action">Add</button>
-                {% for recipe in recipes %} 
+             <!--   {% for recipe in recipes %} 
             <button href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm">Back</button>
-                {% endfor %}
+                {% endfor %} -->
         </div>
     </section>
 </form>
