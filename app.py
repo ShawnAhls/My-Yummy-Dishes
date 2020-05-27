@@ -21,10 +21,6 @@ mongo = PyMongo(app)
 users = mongo.db.users
 recipes = mongo.db.recipes
 
-mongo.db.recipes.create_index([('$**', 'text')])
-mongo.db.users.create_index([('$**', 'text')])
-
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -55,7 +51,7 @@ def register():
         if form['password'] == form['password1']:
             user = users.find_one({'name': form['username']})
             if user:
-                flash(f"{form['username']} already exists!")
+                flash('{form["username"]} already exists!')
 
             # If user does not exist, user can create new account and an encoded password
 
@@ -201,7 +197,7 @@ def update(recipe_id):
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
-        'username': session['user']
+        'username': session['user_name']
     })
     return redirect(url_for('display_recipes'))
 
