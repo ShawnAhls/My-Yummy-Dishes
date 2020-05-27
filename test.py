@@ -20,6 +20,16 @@ class FlaskTestCase(unittest.TestCase):
         self.assertTrue(b'You are logged in', response.data)
         # passed
 
+    # Test the user can register
+
+    def test_register(self):
+        tester = app.test_client(self)
+        response = tester.post('/register',
+                               data=dict(user="shawn", password="password"),
+                               follow_redirects=True)
+        self.assertTrue(response.status_code, 200)
+        # passed with a keyerror on line 52
+
     # Test the user can Sign in
 
     def test_login(self):
@@ -29,6 +39,16 @@ class FlaskTestCase(unittest.TestCase):
                                follow_redirects=True)
         self.assertTrue(response.status_code, 200)
         # passed
+
+    # Test the user can Sign in with incorrecct details
+
+    def test_auth_user(self):
+        tester = app.test_client(self)
+        response = tester.post('/auth_user',
+                               data=dict(user="wrong", password="wrong"),
+                               follow_redirects=True)
+        self.assertTrue(b'Username/Password are not a match', response.data)
+        # passed with a keyerror on line 95
 
     # Test the user can Sign out
 
