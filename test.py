@@ -63,9 +63,9 @@ class FlaskTestCase(unittest.TestCase):
 
     # Test to display all the recipe
 
-    def test_display_recipes(self):
+    def test_recipes(self):
         tester = app.test_client(self)
-        response = tester.get('/display_recipes', content_type='html/text')
+        response = tester.get('/recipes', content_type='html/text')
         self.assertEqual(response.status_code, 200)
         # passed
 
