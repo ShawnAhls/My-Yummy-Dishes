@@ -142,7 +142,7 @@ def add_recipe():
 def new_recipe():
 
     # Adds a new recipe to the database
-
+    categories = mongo.db.categories.find() 
     new_recipe = {
         'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
@@ -195,8 +195,8 @@ def update(recipe_id):
 
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
-    recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-    return render_template('recipe.html', recipes=recipe,
+    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    return render_template('recipe.html', recipes=the_recipe,
                            categories=mongo.db.categories.find())
 
 

@@ -11,21 +11,15 @@
     {% endif %}
 {% endwith%}
 
+
+
 <form action="{{ url_for('new_recipe') }}" method="POST">
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">Category</span>
             </div>
-            <div class="custom-select">
-                <select>
-                {% for category in categories %}
-                <option value="0">Select Category:</option>
-                
-                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                {% endfor %}
-                </select>
-            </div>
+        <input id="category" name="category_name" type="text" class="form-control" placeholder="Category" >
         </div>
     </section> 
     <section class="add">
@@ -57,7 +51,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Method</span>
             </div>
-            <textarea id="method" name="method" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="method" name="method" class="form-control" aria-label="With textarea" placeholder="Please add a comma between methods"></textarea>
         </div>
     </section>
     <section class="add">

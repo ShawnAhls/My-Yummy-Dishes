@@ -15,7 +15,13 @@
         {% for recipe in recipes %}
         <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="card">
-                <img src="{{url_for('static', filename='images/defaultimage.png')}}" class="card-img-top" alt="">
+                <div class="card-img-top">
+                {% if recipe.recipe_image %}   
+                    <img src="{{ recipe.recipe_image}}" class="card-img-top" alt="{{ recipe.recipe_name }}">
+                {% else %}
+                    <img src="{{url_for('static', filename='images/defaultimage.png')}}" class="card-img-top" alt="{{ recipe.recipe_name }}">
+                {% endif %}
+                </div>
                 <div class="card-body">
                     <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">{{ recipe.category_name }}</a></h4>
                     <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.recipe_name }}</a></h5>
