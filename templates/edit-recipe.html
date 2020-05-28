@@ -4,7 +4,7 @@
 {% for recipe in recipes %}
 <h2>Editing {{ recipe.recipe_name }}</h2> 
 
-<form action="{{ url_for('update_recipe') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ url_for('update', recipe_id=recipe._id) }}" method="POST">
     <section class="add">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -21,7 +21,7 @@
     <section class="add">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">Recipe Name</span>
+                    <span class="input-group-text">Recipe Name</span>
                 </div>
                 <input type="text" class="form-control" value="{{ recipe.recipe_name }}" >
             </div>
@@ -30,7 +30,7 @@
         <!--- <label for="basic-url">Image of your Recipe</label> --->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Url of Image</span>
+                <span class="input-group-text" >Url of Image</span>
             </div>
             <input type="text" class="form-control"  placeholder="Optional" id="basic-url" aria-describedby="basic-addon3">
         </div>
@@ -38,7 +38,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Ingredients</span>
+                <span class="input-group-text" >Ingredients</span>
             </div>
             <textarea class="form-control" aria-label="With textarea">{{ recipe.ingredients }}</textarea>
         </div>
@@ -46,7 +46,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Method</span>
+                <span class="input-group-text" >Method</span>
             </div>
             <textarea class="form-control" aria-label="With textarea">{{ recipe.method }}</textarea>
         </div>
@@ -54,7 +54,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Prep Time in mins</span>
+                <span class="input-group-text" >Prep Time in mins</span>
             </div>
         <input type="text" class="form-control" placeholder="{{ recipe.prep_time }}" >
         </div>
@@ -62,7 +62,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Cooking Time in mins</span>
+                <span class="input-group-text" >Cooking Time in mins</span>
             </div>
         <input type="text" class="form-control" placeholder="{{ recipe.cooking_time }}" >
         </div>
@@ -70,7 +70,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Serving</span>
+                <span class="input-group-text" >Serving</span>
             </div>
         <input type="text" class="form-control" placeholder="{{ recipe.serving }}" >
         </div>

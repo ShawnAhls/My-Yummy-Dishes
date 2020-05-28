@@ -131,8 +131,10 @@ def add_recipe():
     # Allows the logged in users to add a new recipe
 
     if session:
+        categories = mongo.db.categories.find()
+        category_list = [category for category in categories]
         return render_template('add-recipe.html',
-                               categories=mongo.db.categories.find())
+                               categories=category_list)
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
@@ -155,7 +157,7 @@ def new_recipe():
         'username': session['user']
     }
     mongo.db.recipes.insert_one(new_recipe)
-    return redirect('display_recipes')
+    return redirect(url_for('display_recipes'))
 
 
 @app.route('/recipe/edit/<recipe_id>', methods=["GET", "POST"])
@@ -190,7 +192,8 @@ def update(recipe_id):
         'serving': request.form.get('serving'),
         'username': session['user']
     })
-    return redirect(url_for('display_recipes'))
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return redirect(url_for('display_recipes', recipe=the_recipe))
 
 
 @app.route('/recipe/<recipe_id>')

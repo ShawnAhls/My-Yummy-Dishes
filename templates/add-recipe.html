@@ -15,13 +15,18 @@
 
 <form action="{{ url_for('new_recipe') }}" method="POST">
     <section class="add">
-        <div class="input-group">
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Category</span>
+                <label class="input-group-text" for="inputGroupSelect01">Category</label>
             </div>
-        <input id="category" name="category_name" type="text" class="form-control" placeholder="Category" >
+            <select class="custom-select" id="category" name="category_name">
+                <option selected>Choose...</option>
+                {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }} </option>
+                {% endfor %}
+            </select>
         </div>
-    </section> 
+    </section>
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
