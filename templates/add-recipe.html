@@ -15,15 +15,23 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon0">Category</span>
+                <span class="input-group-text">Category</span>
             </div>
-        <input id="category" name="category_name" type="text" class="form-control" placeholder="category" >
+            <div class="custom-select">
+                <select>
+                {% for category in categories %}
+                <option value="0">Select Category:</option>
+                
+                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                {% endfor %}
+                </select>
+            </div>
         </div>
     </section> 
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon7">Recipe Name</span>
+                <span class="input-group-text">Recipe Name</span>
             </div>
         <input id="recipe_name" name="recipe_name" type="text" class="form-control" placeholder="Recipe Name" >
         </div>
@@ -31,7 +39,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon6">URL of Image</span>
+                <span class="input-group-text">URL of Image</span>
             </div>
         <input id="image" name="recipe_image" type="text" class="form-control" placeholder="Place URL of image" >
         </div>
@@ -39,15 +47,15 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon2">Ingredients</span>
+                <span class="input-group-text">Ingredients</span>
             </div>
-            <textarea id="ingredients" name="ingredients" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="ingredients" name="ingredients" class="form-control" aria-label="With textarea" placeholder="Please add a comma between ingredients"></textarea>
         </div>
     </section>
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">Method</span>
+                <span class="input-group-text">Method</span>
             </div>
             <textarea id="method" name="method" class="form-control" aria-label="With textarea"></textarea>
         </div>
@@ -55,7 +63,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon4">Prep Time in mins</span>
+                <span class="input-group-text">Prep Time in mins</span>
             </div>
         <input id="prep_time" name="prep_time" type="text" class="form-control" placeholder="Prep Time" >
         </div>
@@ -63,7 +71,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon5">Cooking Time in mins</span>
+                <span class="input-group-text">Cooking Time in mins</span>
             </div>
         <input id="cooking_time" name="cooking_time" type="text" class="form-control" placeholder="Cooking Time" >
         </div>
@@ -71,7 +79,7 @@
     <section class="add">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon6">Serving</span>
+                <span class="input-group-text">Serving</span>
             </div>
         <input id="serving" name="serving" type="text" class="form-control" placeholder="Serving" >
         </div>
@@ -79,10 +87,8 @@
     <section>
         <div class="buttons">
             <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm"
-                type="submit" name="action">Add</button>
-             <!--   {% for recipe in recipes %} 
-            <button href="{{url_for('recipe', recipe_id=recipe._id)}}" class="btn btn-primary btn-sm">Back</button>
-                {% endfor %} -->
+                type="submit" name="action">Add</button> 
+            <button href="{{url_for('display_recipes')}}" class="btn btn-primary btn-sm">Back</button>
         </div>
     </section>
 </form>

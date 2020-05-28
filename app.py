@@ -125,14 +125,14 @@ def display_recipes():
                            categories=mongo.db.categories.find())
 
 
-@app.route('/add_recipe')
+@app.route('/recipe/add', methods=["GET"])
 def add_recipe():
 
     # Allows the logged in users to add a new recipe
 
     if session:
         return render_template('add-recipe.html',
-                               all_categories=mongo.db.categories.find())
+                               categories=mongo.db.categories.find())
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
@@ -140,44 +140,33 @@ def add_recipe():
 
 @app.route('/recipe/new', methods=["POST"])
 def new_recipe():
-    """
-    recipe_image = request.files['recipe-image']
-    if recipe_image:
-        mongo.save_file(recipe_image.filename, recipe_image)
-        mongo.db.recipes.insert({'recipe': request.form.get('recipe'), 'recipe_image_name': recipe_image.filename})
-        """
+
     # Adds a new recipe to the database
-    import pdb; pdb.set_trace()
 
     new_recipe = {
         'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
         'recipe_image': request.form.get('recipe_image'),
-        'ingredients': request.form.getlist('ingredients'),
-        'method': request.form.getlist('method'),
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
-        'name': session['user']
+        'username': session['user']
     }
     mongo.db.recipes.insert(new_recipe)
     return redirect('display_recipes')
 
 
-@app.route('/file/<filename>')
-def file(filename):
-    return mongo.send_file(filename)
-
-
-@app.route('/edit_recipe/<recipe_id>', methods=["GET", "POST"])
+@app.route('/recipe/edit/<recipe_id>', methods=["GET", "POST"])
 def edit_recipe(recipe_id):
 
     # The user can edit their recipe
 
     if session:
         the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-        all_categories = mongo.db.categories.find()
-        category_list = [category for category in all_categories]
+        categories = mongo.db.categories.find()
+        category_list = [category for category in categories]
         return render_template('edit-recipe.html', recipes=the_recipe,
                                categories=category_list)
     else:
@@ -185,29 +174,30 @@ def edit_recipe(recipe_id):
     return redirect(url_for('home'))
 
 
-@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
+@app.route('/recipe/update/<recipe_id>', methods=["GET", "POST"])
 def update(recipe_id):
 
     # Lets the user update the edited recipe
 
     mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
                             {
-        'category_name': request.form.get('cartegory_name'),
+        'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
         'ingredients': request.form.getlist('ingredients'),
         'method': request.form.getlist('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
-        'name': session['user']
+        'username': session['user']
     })
     return redirect(url_for('display_recipes'))
 
 
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
-    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-    return render_template('recipe.html', recipes=the_recipe)
+    recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    return render_template('recipe.html', recipes=recipe,
+                           categories=mongo.db.categories.find())
 
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
