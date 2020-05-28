@@ -142,7 +142,7 @@ def add_recipe():
 def new_recipe():
 
     # Adds a new recipe to the database
-    categories = mongo.db.categories.find() 
+
     new_recipe = {
         'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
@@ -154,7 +154,7 @@ def new_recipe():
         'serving': request.form.get('serving'),
         'username': session['user']
     }
-    mongo.db.recipes.insert(new_recipe)
+    mongo.db.recipes.insert_one(new_recipe)
     return redirect('display_recipes')
 
 
@@ -208,7 +208,7 @@ def delete(recipe_id):
     if 'user' in session:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
-        return render_template('display-recipes.html')
+        return redirect(url_for('display_recipes'))
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
@@ -216,6 +216,7 @@ def delete(recipe_id):
 
 @app.route('/categories/')
 def categories():
+
     return render_template('category.html',
                            categories=mongo.db.categories.find())
 

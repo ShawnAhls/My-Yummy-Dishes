@@ -116,7 +116,7 @@ h5 {
 /*---- Home Page Ends ----*/
 /*---- Displays Recipes Starts ----*/
 
-#display-buttons {
+.display-buttons {
     float: right;
     margin: 5px;
 }
