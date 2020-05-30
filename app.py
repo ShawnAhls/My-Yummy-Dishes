@@ -70,7 +70,7 @@ def register():
     # An error will prompt the user if the password dont match
 
     else:
-        """flash("Passwords dont match!")"""
+        flash("Passwords dont match!")
     return render_template("register.html")
 
 
@@ -114,12 +114,13 @@ def auth():
 @app.route('/sign_out')
 def logout():
     session.clear()
-    flash('You are now signed out!')
+    flash('You are now signed out! ' + ' Good bye')
     return redirect(url_for('home'))
 
 
 @app.route('/recipes')
 def display_recipes():
+
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
@@ -215,13 +216,6 @@ def delete(recipe_id):
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
-
-
-@app.route('/categories/')
-def categories():
-
-    return render_template('category.html',
-                           categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':

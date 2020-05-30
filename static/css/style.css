@@ -12,12 +12,17 @@ header {
     height: 110px;
 }
 
+footer {
+    position: absolute;
+}
+
 .message {
     margin-top: 20px;
 }
 
 .social {
-    margin-top: 70px;
+    position: absolute;
+    margin-top: 198px;
     padding-bottom: 15px;
     width: 100%;
     text-align: center;
