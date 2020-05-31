@@ -74,5 +74,21 @@ Please <a href="">Click Here</a> to see the design.
         <li><a href="https://www.python.org/">Python</a>: was used for the rendering of the application logic.</li>
     </ul>
 <h4>Database</h4>
-
-    <a href="https://www.mongodb.com/">MongoDB</a>: was used for the database.
+    <ul>
+        <a href="https://www.mongodb.com/">MongoDB</a>: was used for the database.
+    </ul>   
+<h4>Frameworks</h4>
+    <ul>
+        <li><a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>: was used for creating routes and the rendering of the HTML5 templates.</li>
+        <li><a href="https://getbootstrap.com/">Bootstrap</a>: was used for the navigation, login templates and responsiveness.</li>
+    </ul>
+<h4>Tools</h4>
+    <ul>
+        <li><a href="https://git-scm.com/">GitHub/Gitpod</a>: was used for writing up all the code.</li>
+        <li><a href="https://www.figma.com/">Figma</a>: was used for the design layout of the website.</li>
+        <li><a href="https://www.heroku.com/">Heroku</a>: was used for the deployment of the website.</li>
+    </ul>
+<h4>Testing</h4>
+    <ul>
+        <a href="https://en.wikipedia.org/wiki/Unit_testing">Unittest</a>: was used for the individual testing of each route.
+    </ul>   
