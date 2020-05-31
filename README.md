@@ -32,20 +32,20 @@ Please <a href="">Click Here</a> to see the database schema.
                which takes them to the add recipe page. Here a user can fill in a form which consists of the category, recipes name,
                image of recipe, Ingredients, Method, prep-time, cooking time and serving how many people.
 
-<strong>Edit a recipe</strong> - Once the user has signed in and wants to edit their favourite recipe their can do that by clicking on the edit button, which 
+<strong>Edit a recipe</strong> - Once the user has signed in and wants to edit their favourite recipe their can do that by clicking on the edit button which 
                 takes them to the edit recipe page. Here a user can fill in a form which consists of the category, recipes name , image of recipe,
                 Ingredients, Method, prep-time, cooking time and serving how many people.
 
-<strong>Delete recipe</strong> - If an user decides to delete a reicpe, they can do so by clicking on the delete button and that recipe will be deleted for
-                the database. A message will appear stating the recipe has been deleted. 
+<strong>Delete recipe</strong> - If an user decides to delete a reicpe, they can do so by clicking on the delete button and that recipe will be deleted from
+                the database. Then a message will appear stating the recipe has been deleted. 
 
 <hr/> 
 
 <h3>Design</h3>
 
-I have used the a program called Figma that help design the the pages and keep the pages as easy to use and uncluttered.
-The user can see and read everything with searching for what the are looking for. The approach of the design was to make
-the website as inviting for everyone.
+I have used the a program called Figma that helped design the pages and this makes them easy to use and keeps them uncluttered.
+The user can see and read everything clearly without having to do an indepth search for what the are looking for. The approach to the design was to make
+the website easy to navigate and inviting so anyone can use this with ease.
 
 I have changed the placemnent of the header image to the body image and the shape of the cards.
 
@@ -110,11 +110,53 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
 <h4>Manual Testing</h4>
 <ol>
     <li>
-        <h2>Responsive</h2>
+        <h5>Responsive</h5>
+        <ul>
+            <li>
             Used Chrome dev tools and to test the responsiveness of the wed site. When resizing the screen from 4k screen, laptop, tablet and iphone
             and everything is responding correctly. Did test if the website will work on other browsers and loaded up correctly.
+            </li>    
+        </ul>
     </li>
     <li>
-        <h2>Sign In</h2>
-            Once the Home page has load up, I went to the Sign In button, when clicked the page loads up the login 
-    </li> 
+        <h5>Sign In</h5>
+            <h6>Correct User details</h6>
+            <ul>
+                <li>
+                Clicked on the Sign In button,
+                Sign in page loaded up and entered in my username and password,
+                The Sign in page will redirected to the Home page.
+                </li>    
+            </ul>
+            <h6>Incorrect User details</h6>
+            <ul>
+                <li>
+                Clicked on the Sign In button,
+                Sign in page loaded up and entered in my username and incorrect password,
+                The Sign In page prompt a message inform the user that their details are incorrect.
+                The page will not redirect to any other page.
+                </li>    
+            </ul>
+    </li>
+    <li>
+        <h5>Registration</h5>
+            <h6>Correct User details</h6>
+            <ul>
+                <li>
+                Clicked on the Registration button,
+                Registration page loaded up and entered in my username and password,
+                A confirmation password is required to compare passwords,
+                The Registration page will redirected to the Home page.
+                </li>    
+            </ul>
+            <h6>Incorrect User details</h6>
+            <ul>
+                <li>
+                Clicked on the Registration button,
+                Registration page loaded up and entered in my username and password,
+                A confirmation password is required to compare passwords,
+                If passwords does not match a message will prompt the user their passwrods does not match.
+                The page will not redirect to any other page.
+                </li>    
+            </ul>
+    </li>
