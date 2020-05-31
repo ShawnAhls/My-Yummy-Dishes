@@ -1,4 +1,4 @@
-My Yummy Dishes
+<h2>My Yummy Dishes</h2>
 
 The My Yummy Dishes website is database website, where an user can view their recipes and that of other users. An user must
 register or Sign in before they are allowed to add, edit or delete recipes. When adding a recipe the user can, if they want to 
@@ -6,9 +6,9 @@ add an image of the recipe they are adding, but if they don't a default image wi
 
 Please <a href="">Click Here</a> to see the database schema.
 
-                            ---------------------
+<hr/> 
 
-UX
+<h3>UX</h3>
 
 Registration of user - The user can register themselves by the registration page where they are ask for an username and password.
                        If an username is already registered a message will appear to inform the user to choose a different 
@@ -39,9 +39,9 @@ Edit a recipe - Once the user has signed in and wants to edit their favourite re
 Delete recipe - If an user decides to delete a reicpe, they can do so by clicking on the delete button and that recipe will be deleted for
                 the database. A message will appear stating the recipe has been deleted. 
 
-                            ---------------------   
+<hr/> 
 
-Design
+<h3>Design</h3>
 
 I have used the a program called Figma that help design the the pages and keep the pages as easy to use and uncluttered.
 The user can see and read everything with searching for what the are looking for. The approach of the design was to make
@@ -51,9 +51,9 @@ I have changed the placemnent of the header image to the body image and the shap
 
 Please <a href="">Click Here</a> to see the design.
 
-                            ---------------------   
+<hr/> 
 
-Features
+<h3>Features</h3>
 
 <ul>
     <li>Dropdown menu for all the categories</li>
@@ -65,4 +65,9 @@ Features
 
 <hr/> 
 
+<h3>Technology</h3>
 
+<h4>Langauges</h4>
+    <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>: was used for the rendering of the template design</li>
+        <li><a href="https://www.w3schools.com/css/">CSS3</a>: was used for the rendering of the template style</li>
