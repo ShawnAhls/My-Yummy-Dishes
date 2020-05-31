@@ -4,7 +4,7 @@ The My Yummy Dishes website is database website, where an user can view their re
 register or Sign in before they are allowed to add, edit or delete recipes. When adding a recipe the user can, if they want to 
 add an image of the recipe they are adding, but if they don't a default image will appear in its place.
 
-Please <a href="">Click Here</a> to see the database schema.
+Please <a href="static/creations/Images/database.pdf">Click Here</a> to see the database schema.
 
 <hr/> 
 
@@ -49,7 +49,7 @@ the website easy to navigate and inviting so anyone can use this with ease.
 
 I have changed the placemnent of the header image to the body image and the shape of the cards.
 
-Please <a href="">Click Here</a> to see the design.
+Please <a href="./static/creations/images/My-Yummy-Dishes.pdf">Click Here</a> to see the design.
 
 <hr/> 
 
