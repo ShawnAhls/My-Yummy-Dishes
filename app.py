@@ -120,7 +120,7 @@ def logout():
 
 @app.route('/recipes')
 def display_recipes():
-
+    
     return render_template('display-recipes.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
@@ -168,32 +168,31 @@ def edit_recipe(recipe_id):
 
     if session:
         the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-        categories = mongo.db.categories.find()
-        category_list = [category for category in categories]
+        all_categories = list(mongo.db.categories.find())
         return render_template('edit-recipe.html', recipes=the_recipe,
-                               categories=category_list)
+                               categories=all_categories)
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
 
 
-@app.route('/recipe/update/<recipe_id>', methods=["GET", "POST"])
+@app.route('/recipe/update/<recipe_id>', methods=["POST"])
 def update(recipe_id):
 
     # Lets the user update the edited recipe
 
-    mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
+    the_recipe = mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
                             {
         'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
-        'ingredients': request.form.getlist('ingredients'),
-        'method': request.form.getlist('method'),
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
         'prep_time': request.form.get('prep_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serving': request.form.get('serving'),
         'username': session['user']
     })
-    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
     return redirect(url_for('display_recipes', recipe=the_recipe))
 
 
