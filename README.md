@@ -106,3 +106,15 @@ inputs come up with errors. As this is not part the HTML5 language. Using the W3
 
 Created a test.py file to test each route that was created in the app.py file. The test.py file uses the unittest that runs each route, when the following 
 is entered in a terminal python3 test.py. Once that is entered the unittest will run.
+
+<h4>Manual Testing</h4>
+<ol>
+    <li>
+        <h2>Responsive</h2>
+            Used Chrome dev tools and to test the responsiveness of the wed site. When resizing the screen from 4k screen, laptop, tablet and iphone
+            and everything is responding correctly. Did test if the website will work on other browsers and loaded up correctly.
+    </li>
+    <li>
+        <h2>Sign In</h2>
+            Once the Home page has load up, I went to the Sign In button, when clicked the page loads up the login 
+    </li> 
