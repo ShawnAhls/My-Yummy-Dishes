@@ -91,4 +91,18 @@ Please <a href="">Click Here</a> to see the design.
 <h4>Testing</h4>
     <ul>
         <a href="https://en.wikipedia.org/wiki/Unit_testing">Unittest</a>: was used for the individual testing of each route.
-    </ul>   
+    </ul>
+
+<hr/>
+
+<h3>Testing<h3>
+
+<h4>Validation of Code</h4>
+
+With the validation of the code using the following two validation sites. Using W3C validation all the HTML that was written was correct, but all the Flask
+inputs come up with errors. As this is not part the HTML5 language. Using the W3C CSS validation for the CSS3 that was written, the result was No Errors Found.
+
+<h4>Automated Testing</h4>
+
+Created a test.py file to test each route that was created in the app.py file. The test.py file uses the unittest that runs each route, when the following 
+is entered in a terminal python3 test.py. Once that is entered the unittest will run.

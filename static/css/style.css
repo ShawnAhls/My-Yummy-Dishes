@@ -150,6 +150,6 @@ h5 {
 /*---- Add Recipes Ends ----*/
 
 .time {
-    display: flex
+    display: flex;
     margin-right: auto;
 }
