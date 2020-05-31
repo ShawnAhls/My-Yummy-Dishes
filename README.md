@@ -56,11 +56,11 @@ Please <a href="">Click Here</a> to see the design.
 <h3>Features</h3>
 
 <ul>
-    <li>Dropdown menu for all the categories</li>
-    <li>Registration and Sign in links for the user to register or sign in</li>
-    <li>On the home page an Add recipe link for the user to add more recipes to the database</li>
-    <li>The ability for the user to edit and delete recipes on the database</li>
-    <li>Each recipe can be displayed on their own page, to list everything about the recipe</li>
+    <li>Dropdown menu for all the categories.</li>
+    <li>Registration and Sign in links for the user to register or sign in.</li>
+    <li>On the home page an Add recipe link for the user to add more recipes to the database.</li>
+    <li>The ability for the user to edit and delete recipes on the database.</li>
+    <li>Each recipe can be displayed on their own page, to list everything about the recipe.</li>
 </ul>    
 
 <hr/> 
@@ -69,5 +69,10 @@ Please <a href="">Click Here</a> to see the design.
 
 <h4>Langauges</h4>
     <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>: was used for the rendering of the template design</li>
-        <li><a href="https://www.w3schools.com/css/">CSS3</a>: was used for the rendering of the template style</li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>: was used for the rendering of the template design.</li>
+        <li><a href="https://www.w3schools.com/css/">CSS3</a>: was used for the rendering of the template style.</li>
+        <li><a href="https://www.python.org/">Python</a>: was used for the rendering of the application logic.</li>
+    </ul>
+<h4>Database</h4>
+
+    <a href="https://www.mongodb.com/">MongoDB</a>: was used for the database.
