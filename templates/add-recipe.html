@@ -19,7 +19,7 @@
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Category</label>
             </div>
-            <select class="custom-select" id="category" name="category_name">
+            <select class="custom-select" id="category" name="category_name" required>
                 <option selected>Choose...</option>
                 {% for category in categories %}
                     <option value="{{ category.category_name }}">{{ category.category_name }} </option>
@@ -32,7 +32,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Recipe Name</span>
             </div>
-        <input id="recipe_name" name="recipe_name" type="text" class="form-control" placeholder="Recipe Name" >
+        <input id="recipe_name" name="recipe_name" type="text" class="form-control" placeholder="Recipe Name" required>
         </div>
     </section>
     <section class="add">
@@ -48,7 +48,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Ingredients</span>
             </div>
-            <textarea id="ingredients" name="ingredients" class="form-control" aria-label="With textarea" placeholder="Please add a comma between ingredients"></textarea>
+            <textarea id="ingredients" name="ingredients" class="form-control" aria-label="With textarea" placeholder="Please add a comma between ingredients" required></textarea>
         </div>
     </section>
     <section class="add">
@@ -56,7 +56,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Method</span>
             </div>
-            <textarea id="method" name="method" class="form-control" aria-label="With textarea" placeholder="Please add a comma between methods"></textarea>
+            <textarea id="method" name="method" class="form-control" aria-label="With textarea" placeholder="Please add a comma between methods" required></textarea>
         </div>
     </section>
     <section class="add">
@@ -64,7 +64,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Prep Time in mins</span>
             </div>
-        <input id="prep_time" name="prep_time" type="text" class="form-control" placeholder="Prep Time" >
+        <input id="prep_time" name="prep_time" type="text" class="form-control" placeholder="Prep Time" required>
         </div>
     </section>
     <section class="add">
@@ -72,7 +72,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Cooking Time in mins</span>
             </div>
-        <input id="cooking_time" name="cooking_time" type="text" class="form-control" placeholder="Cooking Time" >
+        <input id="cooking_time" name="cooking_time" type="text" class="form-control" placeholder="Cooking Time" required>
         </div>
     </section>
     <section class="add">
@@ -80,7 +80,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Serving</span>
             </div>
-        <input id="serving" name="serving" type="text" class="form-control" placeholder="Serving" >
+        <input id="serving" name="serving" type="text" class="form-control" placeholder="Serving" required>
         </div>
     </section>
     <section>

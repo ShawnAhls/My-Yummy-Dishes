@@ -114,7 +114,7 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
         <ul>
             <li>
             Used Chrome dev tools and to test the responsiveness of the wed site. When resizing the screen from 4k screen, laptop, tablet and iphone
-            and everything is responding correctly. Did test if the website will work on other browsers and loaded up correctly.
+            and is responding correctly. Did test if the website will work on other browsers and loaded up correctly.
             </li>    
         </ul>
     </li>
@@ -123,7 +123,7 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
             <h6>Correct User details</h6>
             <ul>
                 <li>
-                Clicked on the Sign In button,
+                Clicked on the Sign In link,
                 Sign in page loaded up and entered in my username and password,
                 The Sign in page will redirected to the Home page.
                 </li>    
@@ -131,7 +131,7 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
             <h6>Incorrect User details</h6>
             <ul>
                 <li>
-                Clicked on the Sign In button,
+                Clicked on the Sign In link,
                 Sign in page loaded up and entered in my username and incorrect password,
                 The Sign In page prompt a message inform the user that their details are incorrect.
                 The page will not redirect to any other page.
@@ -143,7 +143,7 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
             <h6>Correct User details</h6>
             <ul>
                 <li>
-                Clicked on the Registration button,
+                Clicked on the Registration link,
                 Registration page loaded up and entered in my username and password,
                 A confirmation password is required to compare passwords,
                 The Registration page will redirected to the Home page.
@@ -152,11 +152,57 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
             <h6>Incorrect User details</h6>
             <ul>
                 <li>
-                Clicked on the Registration button,
+                Clicked on the Registration link,
                 Registration page loaded up and entered in my username and password,
                 A confirmation password is required to compare passwords,
                 If passwords does not match a message will prompt the user their passwrods does not match.
-                The page will not redirect to any other page.
+                The Registration page will not redirect to any other page.
+                </li>    
+            </ul>
+    </li>
+    <li>
+        <h5>Add Recipe</h5>
+            <ul>
+                <li>
+                Clicked on the Add recipe link,
+                Add recipe page loaded up and allows you to enter the new recipe details,
+                Submitted the from blank and the page does request you to fill in the from,
+                Filled out the from and submitted the from,
+                Add recipe page will redirect you to the display recipes page,
+                Opened the recipe and the whole from was filled out.
+                </li>    
+            </ul>
+    </li>
+    <li>
+        <h5>Edit Recipe</h5>
+            <ul>
+                <li>
+                Clicked on the Edit recipe button,
+                Edit recipe page loaded up and allows you to enter the new details to a recipe and the recipe is already populated,
+                Filled out the from and submitted the from,
+                Edit recipe page will redirect you to the display recipes page.
+                Opened the recipe and the whole from was filled out.
+                </li>    
+            </ul>
+    </li>
+    <li>
+        <h5>Delete Recipe</h5>
+            <ul>
+                <li>
+                Clicked on the Delete recipe button,
+                The recipe is deleted form the database,
+                The Delete recipe page will redirect you to the display recipe page,
+                A message will appear stating the recipe has been deleted.
+                </li>    
+            </ul>
+    </li>
+    <li>
+        <h5>Sign Out</h5>
+            <ul>
+                <li>
+                Clicked on the Sign out link,
+                The Sign Out will redirect you to the Home page,
+                A message will appear stating You have been Signed Out! Good Bye.
                 </li>    
             </ul>
     </li>
