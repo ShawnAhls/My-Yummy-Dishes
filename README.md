@@ -211,3 +211,23 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
 <hr/>
 
 <h4>Deployment</h4>
+
+I used the Heroku app to deploy my application and I deployed in the following way:
+<ol>
+    <li>I created my app under my-yummy-dishes</li>
+    <li>Create a Heroku remote</li>
+    <li>Create a Profile and requirements file</li>
+    <li>Pushed my new project to Heroku</li>
+    <li>Create a web process using heroku ps:scale web=1 in the terminal</li>
+    <li>Set my config vars IP 0.0.0.0 and the PORT 8080</li>
+    <li>Set my MONGO_URI in config vars</li>
+    <li>Refershed my dyno's</li>
+    <li>Opened my app the see if the app is working correctly</li>
+</ol>    
+
+<hr/>
+
+<h4>Acknowledgements</h4>
+
+The recipes I used was from the BBC recipe website and everyone on the Slack that gave me so much advise. 
+YOUTUBE - PrettyPrint for all his video's how to work with flask, python and MongoDB. 
