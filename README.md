@@ -205,4 +205,9 @@ is entered in a terminal python3 test.py. Once that is entered the unittest will
                 A message will appear stating You have been Signed Out! Good Bye.
                 </li>    
             </ul>
-    </li>
+    </li> 
+</ol>
+
+<hr/>
+
+<h4>Deployment</h4>

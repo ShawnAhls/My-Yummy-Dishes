@@ -182,7 +182,7 @@ def update(recipe_id):
     # Lets the user update the edited recipe
 
     the_recipe = mongo.db.recipes.update({"_id": ObjectId(recipe_id)},
-                            {
+                                         {
         'category_name': request.form.get('category_name'),
         'recipe_name': request.form.get('recipe_name'),
         'ingredients': request.form.get('ingredients'),
@@ -221,4 +221,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
-
