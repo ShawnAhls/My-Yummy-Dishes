@@ -49,7 +49,7 @@ the website easy to navigate and inviting so anyone can use this with ease.
 
 I have changed the placemnent of the header image to the body image and the shape of the cards.
 
-Please <a href="./static/creations/Images/My-Yummy-Dishes.pdf">Click Here</a> to see the design.
+Please <a href="static/creations/Images/My-Yummy-Dishes.pdf">Click Here</a> to see the design.
 
 <hr/> 
 
