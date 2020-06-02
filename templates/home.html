@@ -2,6 +2,7 @@
 {% block content %}
 
 <!--- Home --->
+
 <h5 class="home-sign-up">You will need an account to add, edit and remove your recipes. <a href="{{ url_for('register')}}"> Sign Up</a></h5>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -11,8 +12,8 @@
     {% endif %}
 {% endwith%}
 <section>
-    <div class="row  ">
-        {% for recipe in recipes %}
+    <div class="row">
+        {% for recipe in recipes %}   
         <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="card">
                 <div class="card-img-top">
@@ -25,11 +26,10 @@
                 <div class="card-body">
                     <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">{{ recipe.category_name }}</a></h4>
                     <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.recipe_name }}</a></h5>
-                </div> 
-            </div>
+                </div>
+            </div> 
         </div>
         {% endfor %}
     </div>
 </section>  
-
 {% endblock %}

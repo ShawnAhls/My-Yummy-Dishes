@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 
 {% block content %}
-
-<h2>Recipes</h2>
+{% for recipe in recipes %}
+<h2>{{ recipe.category_name }} Recipes</h2>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
@@ -10,7 +10,6 @@
         {% endfor %}   
     {% endif %}
 {% endwith%}
-{% for recipe in recipes %}
     <section>
         <div class="row">
             <div class="col mb-4">

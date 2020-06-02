@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 
 users = mongo.db.users
 recipes = mongo.db.recipes
+categories = mongo.db.categories
 
 
 @app.route('/')
@@ -120,10 +121,10 @@ def logout():
 
 @app.route('/recipes')
 def display_recipes():
-    
+    the_categories = mongo.db.categories.find()
     return render_template('display-recipes.html',
-                           recipes=mongo.db.recipes.find(),
-                           categories=mongo.db.categories.find())
+                           categories=the_categories,
+                           recipes=mongo.db.recipes.find())
 
 
 @app.route('/recipe/add', methods=["GET"])

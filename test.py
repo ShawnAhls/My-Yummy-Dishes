@@ -61,7 +61,7 @@ class FlaskTestCase(unittest.TestCase):
         self.assertTrue(b'You are now signed out!', response.data)
         # passed
 
-    # Test to display all the recipe
+    # Test to display all the recipes in the category
 
     def test_recipes(self):
         tester = app.test_client(self)

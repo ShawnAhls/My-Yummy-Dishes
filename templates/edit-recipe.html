@@ -3,7 +3,6 @@
 {% block content%}
 {% for recipe in recipes %}
 <h2>Editing {{ recipe.recipe_name }}</h2> 
-
 <form action="{{ url_for('update', recipe_id=recipe._id) }}" method="POST">
     <section class="add">
         <div class="input-group mb-3">
