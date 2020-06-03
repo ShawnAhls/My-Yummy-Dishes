@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Luckiest+Guy&display=swap');
 
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: rgb(253, 224, 160);
@@ -12,18 +13,13 @@ header {
     height: 110px;
 }
 
-footer {
-    position: absolute;
-}
-
 .message {
     margin-top: 20px;
 }
 
 .social {
     position: absolute;
-    margin-top: 198px;
-    padding-bottom: 15px;
+    margin-bottom: 0;
     width: 100%;
     text-align: center;
     height: 80px;
@@ -165,3 +161,9 @@ h5 {
   margin-top: 90px;
   }  
 }
+/* 
+@media (min-width: 576px){
+.social {
+     margin-top: 198px;
+}
+} */
