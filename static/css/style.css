@@ -148,3 +148,20 @@ h5 {
 }
 
 /*---- Add Recipes Ends ----*/
+/*--- Media Queries ---*/
+
+@media (min-width: 320px){
+.social {
+    position: absolute;
+    margin-top: 198px;
+    padding-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    height: 80px;
+    background-color: rgb(250, 188, 54);
+    } 
+
+.h2 {
+  margin-top: 90px;
+  }  
+}

@@ -14,7 +14,7 @@
 <section>
     <div class="row">
         {% for recipe in recipes %}   
-        <div class="col-sm-12 col-md-6 col-xl-4">
+        <div class="col-sm-12 col-md-6 col-xl-3">
             <div class="card">
                 <div class="card-img-top">
                 {% if recipe.recipe_image %}   
@@ -24,7 +24,7 @@
                 {% endif %}
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">{{ recipe.category_name }}</a></h4>
+                    <h4 class="card-title">Category: <a class="card-link" href="{{url_for('display_recipes')}}">{{ recipe.category_name }}</a></h4>   
                     <h5 class="card-title">Recipe: <a class="card-link" href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.recipe_name }}</a></h5>
                 </div>
             </div> 

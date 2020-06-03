@@ -119,6 +119,13 @@ def logout():
     return redirect(url_for('home'))
 
 
+# @app.route('/recipes/<category_id>')
+# def display_recipes(category_id):
+#     the_category = mongo.db.categories.find({"_id": ObjectId(category_id)})
+#     return render_template('display-recipes.html',
+#                            categories=the_category,
+#                            recipes=list(mongo.db.recipes.find()))
+
 @app.route('/recipes')
 def display_recipes():
     categories = mongo.db.categories.find()
@@ -162,7 +169,7 @@ def new_recipe():
         'username': session['user']
     }
     mongo.db.recipes.insert_one(new_recipe)
-    return redirect(url_for('display_recipes'))
+    return redirect(url_for('home'))
 
 
 @app.route('/recipe/edit/<recipe_id>', methods=["GET", "POST"])
