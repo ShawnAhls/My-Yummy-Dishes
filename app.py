@@ -30,7 +30,7 @@ def home():
     # Loads the home page and indicates which user is logged in
 
     if 'user' in session:
-        flash("You are logged in " + session['user'])
+        flash("You are signed in as " + session['user'])
     return render_template('home.html',
                            recipes=mongo.db.recipes.find(),
                            categories=mongo.db.categories.find())
@@ -121,10 +121,13 @@ def logout():
 
 @app.route('/recipes')
 def display_recipes():
-    the_categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find()
+    recipes = mongo.db.recipes.find()
+    category_name = [category for category in categories]
+    recipe_name = [recipe for recipe in recipes]
     return render_template('display-recipes.html',
-                           categories=the_categories,
-                           recipes=mongo.db.recipes.find())
+                           categories=category_name,
+                           recipes=recipe_name)
 
 
 @app.route('/recipe/add', methods=["GET"])
