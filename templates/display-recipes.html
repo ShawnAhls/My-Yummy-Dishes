@@ -1,10 +1,10 @@
 {% extends 'base.html'%}
 
 {% block content %}
-{% for category in categories %}
+
 {% for recipe in recipes %}
-{% if category.category_name == recipe.category_name %}
-<h2>{{ category.category_name }} Recipes</h2>
+
+<h2>{{ recipe.category_name}} Recipes</h2>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
@@ -28,13 +28,13 @@
             </div>
         </div>    
     </section>  
-{% endif %}
+
 {% endfor %}  
-{% endfor %}
+
     <section>
         <div class="buttons">
             <a href="{{url_for('home')}}" class="btn btn-primary btn-sm"
             tabindex="-1" role="button">Back</a>
         </div>  
     </section>
-{% endblock %}7
+{% endblock %}

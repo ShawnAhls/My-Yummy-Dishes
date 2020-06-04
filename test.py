@@ -25,7 +25,9 @@ class FlaskTestCase(unittest.TestCase):
     def test_register(self):
         tester = app.test_client(self)
         response = tester.post('/register',
-                               data=dict(user="shawn", password="password"),
+                               data=dict(username="name",
+                                         password="password",
+                                         password1="password"),
                                follow_redirects=True)
         self.assertTrue(response.status_code, 200)
         # passed with a keyerror on line 52
@@ -35,7 +37,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_login(self):
         tester = app.test_client(self)
         response = tester.post('/login',
-                               data=dict(user="shawn", password="password"),
+                               data=dict(username="shawn", password="password"),
                                follow_redirects=True)
         self.assertTrue(response.status_code, 200)
         # passed
@@ -45,7 +47,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_auth_user(self):
         tester = app.test_client(self)
         response = tester.post('/auth_user',
-                               data=dict(user="wrong", password="wrong"),
+                               data=dict(username="wrong", password="wrong"),
                                follow_redirects=True)
         self.assertTrue(b'Username/Password are not a match', response.data)
         # passed with a keyerror on line 95

@@ -27,7 +27,7 @@ categories = mongo.db.categories
 @app.route('/home')
 def home():
 
-    # Loads the home page and indicates which user is logged in
+    """ Loads the home page and indicates which user is logged in """
 
     if 'user' in session:
         flash("You are signed in as " + session['user'])
@@ -70,8 +70,8 @@ def register():
 
     # An error will prompt the user if the password dont match
 
-    else:
-        flash("Passwords dont match!")
+        else:
+            flash("Passwords dont match!")
     return render_template("register.html")
 
 
@@ -119,22 +119,30 @@ def logout():
     return redirect(url_for('home'))
 
 
-# @app.route('/recipes/<category_id>')
-# def display_recipes(category_id):
-#     the_category = mongo.db.categories.find({"_id": ObjectId(category_id)})
-#     return render_template('display-recipes.html',
-#                            categories=the_category,
-#                            recipes=list(mongo.db.recipes.find()))
-
-@app.route('/recipes')
-def display_recipes():
-    categories = mongo.db.categories.find()
-    recipes = mongo.db.recipes.find()
-    category_name = [category for category in categories]
-    recipe_name = [recipe for recipe in recipes]
+@app.route('/recipes/<category_id>')
+def display_recipes(category_id):
+    recipes_from_category = mongo.db.categories.find({"_id": ObjectId(category_id)})
     return render_template('display-recipes.html',
-                           categories=category_name,
-                           recipes=recipe_name)
+                           recipes=recipes_from_category,
+                           categories=mongo.db.categories.find())
+
+
+@app.route('/recipes/<category_name>')
+def display_recipes_name(category_name):
+    recipes_from_category_name = mongo.db.recipes.find({"category_name": category_name})
+    return render_template('display-recipes.html',
+                           recipes=recipes_from_category_name)
+
+
+# @app.route('/recipes')
+# def display_recipes():
+#     categories = mongo.db.categories.find()
+#     recipes = mongo.db.recipes.find()
+#     category_name = [category for category in categories]
+#     recipe_name = [recipe for recipe in recipes]
+#     return render_template('display-recipes.html',
+#                            categories=category_name,
+#                            recipes=recipe_name)
 
 
 @app.route('/recipe/add', methods=["GET"])
@@ -142,7 +150,7 @@ def add_recipe():
 
     # Allows the logged in users to add a new recipe
 
-    if session:
+    if 'user' in session:
         categories = mongo.db.categories.find()
         category_list = [category for category in categories]
         return render_template('add-recipe.html',
@@ -172,12 +180,12 @@ def new_recipe():
     return redirect(url_for('home'))
 
 
-@app.route('/recipe/edit/<recipe_id>', methods=["GET", "POST"])
+@app.route('/recipe/edit/<recipe_id>', methods=["GET"])
 def edit_recipe(recipe_id):
 
     # The user can edit their recipe
 
-    if session:
+    if 'user' in session:
         the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
         all_categories = list(mongo.db.categories.find())
         return render_template('edit-recipe.html', recipes=the_recipe,
@@ -204,7 +212,7 @@ def update(recipe_id):
         'username': session['user']
     })
 
-    return redirect(url_for('display_recipes', recipe=the_recipe))
+    return redirect(url_for('display_recipes', recipes=the_recipe))
 
 
 @app.route('/recipe/<recipe_id>')
@@ -232,3 +240,4 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
+#os.environ.get('DEBUG')
