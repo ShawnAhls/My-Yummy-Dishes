@@ -129,9 +129,10 @@ def display_recipes(category_id):
 
 @app.route('/recipes/display/<recipe_name>')
 def display_recipes_name(recipe_name):
-    recipes_name = mongo.db.recipes.find({"recipe_name": recipe_name})
+    category_name = mongo.db.recipes.find({"recipe_name": recipe_name})
+    print(recipe_name)
     return render_template('display-recipes.html',
-                           recipes=recipes_name)
+                           recipes=category_name)
 
 
 @app.route('/recipe/<recipe_id>')
@@ -192,9 +193,9 @@ def edit_recipe(recipe_id):
 
     if 'user' in session:
         the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-        all_categories = list(mongo.db.categories.find())
+        category = mongo.db.categories.find()
         return render_template('edit-recipe.html', recipes=the_recipe,
-                               categories=all_categories)
+                               categories=category)
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
