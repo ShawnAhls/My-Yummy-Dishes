@@ -76,7 +76,7 @@
     </section>
     <section>
         <div class="buttons">
-            {% for category in categories %}
+            {% for cat in categories %}
             <a href="{{url_for('display_recipes', category_id=category._id )}}" class="btn btn-primary btn-sm"
                 tabindex="-1" role="button" type="submit">Update</a>
             {% endfor %}    

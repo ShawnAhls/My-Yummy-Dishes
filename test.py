@@ -69,7 +69,7 @@ class FlaskTestCase(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/recipes', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        # passed
+        # failed
 
     # Test add recipe to display a message if user is not signed in
 
@@ -87,7 +87,7 @@ class FlaskTestCase(unittest.TestCase):
                                data=dict(user="shawn", password="password"),
                                follow_redirects=True)
         self.assertTrue(response.status_code, 200)
-        # passes but has a keyerror 'user' in line 160
+        # passes
 
     # Test edit recipe to display a message if user is not signed in
 

@@ -119,19 +119,21 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/recipes/<category_id>')
-def display_recipes(category_id):
+@app.route('/recipes/display/<category_id>/<category_name>')
+def display_recipes(category_id, category_name):
     recipes_from_category = mongo.db.categories.find({"_id": ObjectId(category_id)})
-    return render_template('display-recipes.html',
-                           recipes=recipes_from_category,
-                           categories=mongo.db.categories.find())
-
-
-@app.route('/recipes/<category_name>')
-def display_recipes_name(category_name):
     recipes_from_category_name = mongo.db.recipes.find({"category_name": category_name})
     return render_template('display-recipes.html',
+                           categories=recipes_from_category,
                            recipes=recipes_from_category_name)
+                        #    categories=mongo.db.categories.find())
+
+
+# @app.route('/recipes/<category_name>')
+# def display_recipes_name(category_name):
+#     recipes_from_category_name = mongo.db.recipes.find({"category_name": category_name})
+#     return render_template('display-recipes.html',
+#                            recipes=recipes_from_category_name)
 
 
 # @app.route('/recipes')
