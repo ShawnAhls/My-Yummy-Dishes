@@ -119,23 +119,26 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/recipes/display/<category_id>/<category_name>')
-def display_recipes(category_id, category_name):
+@app.route('/recipes/<category_id>')
+def display_recipes(category_id):
     recipes_from_category = mongo.db.categories.find({"_id": ObjectId(category_id)})
-    recipes_from_category_name = mongo.db.recipes.find({"category_name": category_name})
     return render_template('display-recipes.html',
-                           categories=recipes_from_category,
-                           recipes=recipes_from_category_name)
-                        #    categories=mongo.db.categories.find())
+                           recipes=recipes_from_category,
+                           categories=mongo.db.categories.find())
 
 
-# @app.route('/recipes/<category_name>')
-# def display_recipes_name(category_name):
-#     recipes_from_category_name = mongo.db.recipes.find({"category_name": category_name})
-#     return render_template('display-recipes.html',
-#                            recipes=recipes_from_category_name)
+@app.route('/recipes/display/<recipe_name>')
+def display_recipes_name(recipe_name):
+    recipes_name = mongo.db.recipes.find({"recipe_name": recipe_name})
+    return render_template('display-recipes.html',
+                           recipes=recipes_name)
 
 
+@app.route('/recipe/<recipe_id>')
+def recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    return render_template('recipe.html', recipes=the_recipe,
+                           categories=mongo.db.categories.find())
 # @app.route('/recipes')
 # def display_recipes():
 #     categories = mongo.db.categories.find()
@@ -215,13 +218,6 @@ def update(recipe_id):
     })
 
     return redirect(url_for('display_recipes', recipes=the_recipe))
-
-
-@app.route('/recipe/<recipe_id>')
-def recipe(recipe_id):
-    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
-    return render_template('recipe.html', recipes=the_recipe,
-                           categories=mongo.db.categories.find())
 
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
