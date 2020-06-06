@@ -218,7 +218,7 @@ def update(recipe_id):
         'username': session['user']
     })
 
-    return redirect(url_for('display_recipes', recipes=the_recipe))
+    return redirect(url_for('recipe', recipes=the_recipe))
 
 
 @app.route('/delete/<recipe_id>', methods=['GET', 'POST'])
