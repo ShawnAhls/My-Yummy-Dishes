@@ -27,9 +27,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categories
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" name="category_name">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
-                    <a id="category" class="dropdown-item" href="{{url_for('display_recipes', category_id=category._id, recipe_name=recipe_name)}}" value="{{ category.category_name }}">{{ category.category_name }}</a>
+                    <a id="category" class="dropdown-item" href="{{url_for('display_recipes', category_id=category._id)}}">{{ category.category_name }}</a>
                     {% endfor %}
                     </div>
                 </li>
