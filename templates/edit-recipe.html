@@ -4,7 +4,7 @@
 {% for recipe in recipes %}
 <h2>Editing {{ recipe.recipe_name }}</h2> 
 <form action="{{ url_for('update', recipe_id=recipe._id) }}" method="POST">
-    <section class="add">
+    <!-- <section class="add">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Category</label>
@@ -12,11 +12,11 @@
             <select class="custom-select" id="category" name="category_name">
                 <option selected>Choose...</option>
                 {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }} </option>
+                    <option value="{{ category.category_name }}">{{ recipe.category_name }} </option>
                 {% endfor %}
             </select>
         </div>
-    </section>    
+    </section>     -->
     <section class="add">
             <div class="input-group">
                 <div class="input-group-prepend">
