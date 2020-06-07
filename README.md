@@ -47,8 +47,6 @@ I have used the a program called Figma that helped design the pages and this mak
 The user can see and read everything clearly without having to do an indepth search for what the are looking for. The approach to the design was to make
 the website easy to navigate and inviting so anyone can use this with ease.
 
-I have changed the placemnent of the header image to the body image and the shape of the cards.
-
 Please <a href="static/creations/Images/My-Yummy-Dishes.pdf">Click Here</a> to see the design.
 
 <hr/> 
