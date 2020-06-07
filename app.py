@@ -134,13 +134,6 @@ def display_recipes(category_id):
                            categories=category)
 
 
-# @app.route('/recipes/display/<category_name>')
-# def display_recipes_name(category_name):
-#     recipe_name = mongo.db.recipes.find({"category_name": category_name})
-#     return render_template('display-recipes.html',
-#                            recipes=recipe_name)
-
-
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
     the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
@@ -224,7 +217,7 @@ def delete(recipe_id):
     if 'user' in session:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash('Recipe Deleted')
-        return redirect(url_for('display_recipes'))
+        return redirect(url_for('home'))
     else:
         flash('You need to Sign in first')
     return redirect(url_for('home'))
@@ -233,5 +226,4 @@ def delete(recipe_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
-#os.environ.get('DEBUG')
+            debug=os.environ.get('DEBUG'))
